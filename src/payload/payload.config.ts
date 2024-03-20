@@ -1,6 +1,7 @@
 import { webpackBundler } from '@payloadcms/bundler-webpack'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { payloadCloud } from '@payloadcms/plugin-cloud'
+import formBuilder, { fields } from '@payloadcms/plugin-form-builder'
 import nestedDocs from '@payloadcms/plugin-nested-docs'
 import redirects from '@payloadcms/plugin-redirects'
 import seo from '@payloadcms/plugin-seo'
@@ -98,6 +99,51 @@ export default buildConfig({
       collections: ['pages', 'posts', 'projects'],
       generateTitle,
       uploadsCollection: 'media',
+    }),
+    formBuilder({
+      formOverrides: {
+        slug: 'contact-forms',
+        labels: {
+          singular: 'Formulář',
+          plural: 'Formuláře',
+        },
+        access: {
+          read: () => true,
+          update: () => false,
+        },
+        fields: [
+          {
+            name: 'customField',
+            label: 'Vlastní pole',
+            type: 'text',
+          },
+        ],
+      },
+      redirectRelationships: ['pages'],
+      fields: {
+        text: {
+          ...fields.text,
+          labels: {
+            singular: 'Custom Text Field',
+            plural: 'Custom Text Fields',
+          },
+        },
+        textarea: true,
+        select: true,
+        email: true,
+        state: true,
+        country: true,
+        checkbox: true,
+        number: true,
+        message: true,
+        payment: false,
+      },
+      formSubmissionOverrides: {
+        labels: {
+          singular: 'Zpráva z formuláře',
+          plural: 'Zprávy z formuláře',
+        },
+      },
     }),
     payloadCloud(),
   ],

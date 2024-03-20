@@ -2,9 +2,9 @@ import React from 'react'
 import { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 
-import { AdminBar } from './_components/AdminBar'
+import Wrapper from '../layouts/Wrapper'
 import { Footer } from './_components/Footer'
-import { Header } from './_components/Header'
+import FetchHeader from './_components/Header/FetchHeader'
 import { Providers } from './_providers'
 import { InitTheme } from './_providers/Theme/InitTheme'
 import { mergeOpenGraph } from './_utilities/mergeOpenGraph'
@@ -29,11 +29,18 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
       <body className={`${defaultFont.className}`}>
         <Providers>
-          <AdminBar />
-          {/* @ts-expect-error */}
-          <Header />
-          {children}
-          {/*<Footer />*/}
+          <Wrapper>
+            <div id="smooth-wrapper">
+              <div id="smooth-content">
+                <main>
+                  <FetchHeader />
+                  {children}
+                </main>
+                {/* @ts-expect-error */}
+                <Footer />
+              </div>
+            </div>
+          </Wrapper>
         </Providers>
       </body>
     </html>

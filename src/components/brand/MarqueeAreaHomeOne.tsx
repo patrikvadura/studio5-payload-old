@@ -1,23 +1,16 @@
-
-
-import React from 'react';
+import React from 'react'
 
 const MarqueeAreaHomeOne = () => {
   return (
     <>
-      <div className="cs_height_130 cs_height_lg_60"></div> 
-      <div className="cs_moving_section_wrap cs_bold">
+      <div className="mt-16 cs_moving_section_wrap cs_bold">
         <div className="cs_moving_section_in">
-          <div className="cs_moving_section cs_stroke_text">
-            More Creativity Power With Vixan Agency
-          </div>
-          <div className="cs_moving_section cs_stroke_text">
-            More Creativity Power With Vixan Agency
-          </div>
+          <div className="cs_moving_section cs_stroke_text">Grafický design a 3D vizualizace</div>
+          <div className="cs_moving_section cs_stroke_text">Tvorba webových stránek</div>
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default MarqueeAreaHomeOne;
+export default MarqueeAreaHomeOne

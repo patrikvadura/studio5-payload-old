@@ -1,0 +1,87 @@
+.about {
+  @apply flex items-center relative h-[600px];
+
+  .background {
+    @apply absolute top-0 right-0 h-[600px] w-1/2 object-cover;
+
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    object-fit: cover !important;
+
+    img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+    }
+  }
+
+  >*:not(.background) {
+    @apply relative;
+
+    z-index: 2;
+  }
+
+  .textWrapper {
+    @apply w-full max-w-[800px] bg-white animate-fade-up animate-once animate-ease-in;
+
+    padding: 55px 200px 55px 0;
+  }
+}
+
+.subtitle {
+  @apply relative inline-block mb-8 pl-6 text-lg text-secondary;
+
+  &::before {
+    @apply top-[6px] left-0 size-4 rounded-full absolute bg-primary;
+
+    content: "";
+  }
+}
+
+.title {
+  @apply mb-12 text-5xl font-bold;
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(-360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.rotating {
+  @apply font-semibold;
+
+  animation: rotating 12s linear infinite;
+}
+
+/*-- Slider --*/
+
+.slider {
+  @apply relative;
+
+  &Controll {
+    @apply flex items-center relative -top-[60%] -mt-[52px];
+
+    z-index: 2;
+  }
+
+  &NavigationWrap {
+    @apply flex items-center;
+  }
+
+  &Pagination {
+    @apply w-auto mr-12 text-secondary text-xl font-bold;
+  }
+
+  &Prev {
+    margin-top: 22px;
+  }
+  &Next {
+    margin-bottom: 22px;
+    margin-left: 30px;
+  }
+}

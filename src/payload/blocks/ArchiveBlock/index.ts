@@ -5,25 +5,28 @@ import richText from '../../fields/richText'
 export const Archive: Block = {
   slug: 'archive',
   labels: {
-    singular: 'Archive',
-    plural: 'Archives',
+    singular: 'Výpis příspěvků',
+    plural: 'Výpisy příspěvků',
   },
+  imageURL:
+    'https://res.cloudinary.com/patrik-vadura/image/upload/v1710759851/Payload/Blocks/block_archive_s2hhtn.webp',
   fields: [
     richText({
       name: 'introContent',
-      label: 'Intro Content',
+      label: 'Úvodní popis',
     }),
     {
       name: 'populateBy',
+      label: 'Zdroj obsahu',
       type: 'select',
       defaultValue: 'collection',
       options: [
         {
-          label: 'Collection',
+          label: 'Kolekce',
           value: 'collection',
         },
         {
-          label: 'Individual Selection',
+          label: 'Individuální výběr',
           value: 'selection',
         },
       ],
@@ -31,18 +34,18 @@ export const Archive: Block = {
     {
       type: 'select',
       name: 'relationTo',
-      label: 'Collections To Show',
+      label: 'Výběr kolekce',
       defaultValue: 'posts',
       admin: {
         condition: (_, siblingData) => siblingData.populateBy === 'collection',
       },
       options: [
         {
-          label: 'Posts',
+          label: 'Příspěvky',
           value: 'posts',
         },
         {
-          label: 'Projects',
+          label: 'Projekty',
           value: 'projects',
         },
       ],
@@ -50,7 +53,7 @@ export const Archive: Block = {
     {
       type: 'relationship',
       name: 'categories',
-      label: 'Categories To Show',
+      label: 'Výběr kategorie',
       relationTo: 'categories',
       hasMany: true,
       admin: {
@@ -70,7 +73,7 @@ export const Archive: Block = {
     {
       type: 'relationship',
       name: 'selectedDocs',
-      label: 'Selection',
+      label: 'Výběr',
       relationTo: ['posts', 'projects'],
       hasMany: true,
       admin: {
@@ -80,23 +83,23 @@ export const Archive: Block = {
     {
       type: 'relationship',
       name: 'populatedDocs',
-      label: 'Populated Docs',
+      label: 'Předvyplněné dokumenty',
       relationTo: ['posts', 'projects'],
       hasMany: true,
       admin: {
         disabled: true,
-        description: 'This field is auto-populated after-read',
+        description: 'Toto pole je automaticky vyplněno po přečtení.',
         condition: (_, siblingData) => siblingData.populateBy === 'collection',
       },
     },
     {
       type: 'number',
       name: 'populatedDocsTotal',
-      label: 'Populated Docs Total',
+      label: 'Celkem předvyplněné dokumenty',
       admin: {
         step: 1,
         disabled: true,
-        description: 'This field is auto-populated after-read',
+        description: 'Toto pole je automaticky vyplněno po přečtení.',
         condition: (_, siblingData) => siblingData.populateBy === 'collection',
       },
     },

@@ -7,9 +7,11 @@ import richText from '../../fields/richText'
 export const CallToAction: Block = {
   slug: 'cta',
   labels: {
-    singular: 'Call to Action',
-    plural: 'Calls to Action',
+    singular: 'Výzva k akci',
+    plural: 'Výzvy k akci',
   },
+  imageURL:
+    'https://res.cloudinary.com/patrik-vadura/image/upload/v1710625573/Payload/Blocks/block_cta_tpvntg.webp',
   fields: [
     invertBackground,
     richText(),

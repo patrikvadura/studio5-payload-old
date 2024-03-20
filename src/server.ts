@@ -1,7 +1,10 @@
 import dotenv from 'dotenv'
 import next from 'next'
 import nextBuild from 'next/dist/build'
+import nodemailerSendgrid from 'nodemailer-sendgrid'
 import path from 'path'
+
+const sendGridAPIKey = process.env.SENDGRID_API_KEY
 
 dotenv.config({
   path: path.resolve(__dirname, '../.env'),
@@ -22,6 +25,17 @@ const start = async (): Promise<void> => {
     onInit: () => {
       payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`)
     },
+    ...(sendGridAPIKey
+      ? {
+          email: {
+            transportOptions: nodemailerSendgrid({
+              apiKey: sendGridAPIKey,
+            }),
+            fromName: 'Patrik Vaďura',
+            fromAddress: 'info@patrikvadura.cz',
+          },
+        }
+      : {}),
   })
 
   if (process.env.PAYLOAD_SEED === 'true') {

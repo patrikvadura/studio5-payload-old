@@ -6,6 +6,7 @@ import { Archive } from '../../blocks/ArchiveBlock'
 import { CallToAction } from '../../blocks/CallToAction'
 import { Content } from '../../blocks/Content'
 import { MediaBlock } from '../../blocks/MediaBlock'
+import { Slider } from '../../blocks/Slider'
 import { hero } from '../../fields/hero'
 import { slugField } from '../../fields/slug'
 import { populateArchiveBlock } from '../../hooks/populateArchiveBlock'
@@ -16,7 +17,7 @@ export const Pages: CollectionConfig = {
   slug: 'pages',
   admin: {
     useAsTitle: 'title',
-    defaultColumns: ['title', 'slug', 'updatedAt'],
+    defaultColumns: ['title', 'slug', 'updatedAt', 'id', '_status'],
     preview: doc => {
       return `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/next/preview?url=${encodeURIComponent(
         `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/${doc.slug !== 'home' ? doc.slug : ''}`,
@@ -40,11 +41,13 @@ export const Pages: CollectionConfig = {
   fields: [
     {
       name: 'title',
+      label: 'Název',
       type: 'text',
       required: true,
     },
     {
       name: 'publishedAt',
+      label: 'Publikováno dne',
       type: 'date',
       admin: {
         position: 'sidebar',
@@ -58,13 +61,13 @@ export const Pages: CollectionConfig = {
           fields: [hero],
         },
         {
-          label: 'Content',
+          label: 'Obsah',
           fields: [
             {
               name: 'layout',
               type: 'blocks',
-              required: true,
-              blocks: [CallToAction, Content, MediaBlock, Archive],
+              required: false,
+              blocks: [CallToAction, Content, MediaBlock, Archive, Slider],
             },
           ],
         },

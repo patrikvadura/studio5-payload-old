@@ -7,6 +7,7 @@ import { CommentsBlock, type CommentsBlockProps } from '../../_blocks/Comments/i
 import { ContentBlock } from '../../_blocks/Content'
 import { MediaBlock } from '../../_blocks/MediaBlock'
 import { RelatedPosts, type RelatedPostsProps } from '../../_blocks/RelatedPosts'
+import { Slider } from '../../_blocks/Slider'
 import { toKebabCase } from '../../_utilities/toKebabCase'
 import { BackgroundColor } from '../BackgroundColor'
 import { VerticalPadding, VerticalPaddingOptions } from '../VerticalPadding'
@@ -18,6 +19,7 @@ const blockComponents = {
   archive: ArchiveBlock,
   relatedPosts: RelatedPosts,
   comments: CommentsBlock,
+  slider: Slider,
 }
 
 export const Blocks: React.FC<{

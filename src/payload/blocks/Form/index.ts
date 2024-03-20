@@ -5,9 +5,10 @@ import richText from '../../fields/richText'
 export const FormBlock: Block = {
   slug: 'formBlock',
   labels: {
-    singular: 'Form Block',
-    plural: 'Form Blocks',
+    singular: 'Formulář',
+    plural: 'Formuláře',
   },
+  imageURL: '',
   graphQL: {
     singularName: 'FormBlock',
   },

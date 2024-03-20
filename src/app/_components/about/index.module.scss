@@ -1,0 +1,85 @@
+.about {
+  @apply relative;
+
+  padding: 55px 20px 55px 0;
+
+  @screen md {
+    padding: 140px 0;
+  }
+
+  .background {
+    @apply absolute top-0 right-0 h-full w-[55%];
+  }
+
+  >*:not(.background) {
+    @apply relative;
+
+    z-index: 2;
+  }
+
+  .textWrapper {
+    @apply w-full max-w-[840px] bg-white animate-fade-up animate-once animate-ease-in;
+
+    padding: 55px 200px 55px 0;
+  }
+}
+
+.subtitle {
+  @apply relative inline-block mb-8 pl-6 text-lg text-secondary;
+
+  &::before {
+    @apply top-[6px] left-0 size-4 rounded-full absolute bg-primary;
+
+    content: "";
+  }
+}
+
+.title {
+  @apply mb-12 text-5xl font-bold;
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(-360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.rotating {
+  @apply font-semibold;
+
+  animation: rotating 12s linear infinite;
+}
+
+/*-- Slider --*/
+
+.slider {
+  @apply relative;
+
+  &Controll {
+    display: flex;
+    align-items: center;
+    margin-top: -52px;
+    position: relative;
+    top: -60px;
+    z-index: 2;
+  }
+
+  &NavigationWrap {
+    @apply flex items-center;
+  }
+
+  &Pagination {
+    @apply w-auto mr-12 text-secondary text-xl font-bold;
+  }
+
+  &Prev {
+    margin-top: 22px;
+  }
+  &Next {
+    margin-bottom: 22px;
+    margin-left: 30px;
+  }
+}

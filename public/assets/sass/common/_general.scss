@@ -198,7 +198,7 @@ hr {
 
 .cs_white_color,
 .cs_white_color_hover:hover {
-    color: $white;
+  @apply text-white;
 }
 
 .cs_primary_color {

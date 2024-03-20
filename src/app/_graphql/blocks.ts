@@ -23,6 +23,19 @@ export const CONTENT = `
     richText
     enableLink
     link ${LINK_FIELDS()}
+    ${MEDIA}
+  }
+}
+`
+
+export const SLIDER = `
+...on Slider {
+  blockType
+  slides {
+    title
+    subtitle
+    richText
+    ${MEDIA}
   }
 }
 `

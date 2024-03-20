@@ -4,6 +4,12 @@ import { invertBackground } from '../../fields/invertBackground'
 
 export const MediaBlock: Block = {
   slug: 'mediaBlock',
+  labels: {
+    singular: 'Media',
+    plural: 'Media',
+  },
+  imageURL:
+    'https://res.cloudinary.com/patrik-vadura/image/upload/v1710759870/Payload/Blocks/block_slider_rmbnk9.webp',
   fields: [
     invertBackground,
     {
