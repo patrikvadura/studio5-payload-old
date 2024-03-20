@@ -1,0 +1,48 @@
+/*-- Hero --*/
+
+.hero {
+  @apply min-h-[100vh] relative py-32 overflow-hidden;
+
+  .background {
+    @apply absolute w-[45%] top-0 left-0;
+
+    height: calc(100% + 100px);
+  }
+  > *:not(.background) {
+    position: relative;
+    z-index: 6;
+  }
+}
+
+@keyframes textupdown {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes colorChaneg {
+  0% {
+    @apply text-secondary;
+  }
+  30% {
+    @apply text-secondary;
+  }
+  30% {
+    @apply text-primary;
+  }
+  60% {
+    @apply text-primary;
+  }
+  60% {
+    @apply text-secondary;
+  }
+  100% {
+    @apply text-primary;
+  }
+}
