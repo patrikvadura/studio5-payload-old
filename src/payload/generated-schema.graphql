@@ -303,7 +303,7 @@ input Page_Hero_Media_where_or {
   OR: [Page_Hero_Media_where_or]
 }
 
-union Page_Layout = Cta | Content | MediaBlock | Archive | Slider
+union Page_Layout = Cta | Content | MediaBlock | Archive | ArchiveCarousel | Slider
 
 type Cta {
   invertBackground: Boolean
@@ -746,6 +746,8 @@ input MediaBlock_Media_where_or {
 }
 
 type Archive {
+  title: String
+  subtitle: String
   introContent(depth: Int): JSON
   populateBy: Archive_populateBy
   relationTo: Archive_relationTo
@@ -1062,182 +1064,45 @@ input Post_Hero_Media_where_or {
   OR: [Post_Hero_Media_where_or]
 }
 
-union Post_Layout = Cta | Content | MediaBlock | Archive
+union Post_Layout = Cta | Content | MediaBlock | Archive | ArchiveCarousel
 
-union Post_PremiumContent = Cta | Content | MediaBlock | Archive
-
-type Post_Meta {
+type ArchiveCarousel {
   title: String
-  description: String
-  image(where: Post_Meta_Image_where): Media
+  subtitle: String
+  introContent(depth: Int): JSON
+  populateBy: ArchiveCarousel_populateBy
+  relationTo: ArchiveCarousel_relationTo
+  categories: [Category!]
+  limit: Float
+  selectedDocs: [ArchiveCarousel_SelectedDocs_Relationship!]
+  populatedDocs: [ArchiveCarousel_PopulatedDocs_Relationship!]
+  populatedDocsTotal: Float
+  id: String
+  blockName: String
+  blockType: String
 }
 
-input Post_Meta_Image_where {
-  alt: Post_Meta_Image_alt_operator
-  caption: Post_Meta_Image_caption_operator
-  updatedAt: Post_Meta_Image_updatedAt_operator
-  createdAt: Post_Meta_Image_createdAt_operator
-  url: Post_Meta_Image_url_operator
-  filename: Post_Meta_Image_filename_operator
-  mimeType: Post_Meta_Image_mimeType_operator
-  filesize: Post_Meta_Image_filesize_operator
-  width: Post_Meta_Image_width_operator
-  height: Post_Meta_Image_height_operator
-  id: Post_Meta_Image_id_operator
-  AND: [Post_Meta_Image_where_and]
-  OR: [Post_Meta_Image_where_or]
+enum ArchiveCarousel_populateBy {
+  collection
+  selection
 }
 
-input Post_Meta_Image_alt_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
+enum ArchiveCarousel_relationTo {
+  posts
+  projects
 }
 
-input Post_Meta_Image_caption_operator {
-  equals: JSON
-  not_equals: JSON
-  like: JSON
-  contains: JSON
-  exists: Boolean
+type ArchiveCarousel_SelectedDocs_Relationship {
+  relationTo: ArchiveCarousel_SelectedDocs_RelationTo
+  value: ArchiveCarousel_SelectedDocs
 }
 
-input Post_Meta_Image_updatedAt_operator {
-  equals: DateTime
-  not_equals: DateTime
-  greater_than_equal: DateTime
-  greater_than: DateTime
-  less_than_equal: DateTime
-  less_than: DateTime
-  like: DateTime
-  exists: Boolean
+enum ArchiveCarousel_SelectedDocs_RelationTo {
+  posts
+  projects
 }
 
-input Post_Meta_Image_createdAt_operator {
-  equals: DateTime
-  not_equals: DateTime
-  greater_than_equal: DateTime
-  greater_than: DateTime
-  less_than_equal: DateTime
-  less_than: DateTime
-  like: DateTime
-  exists: Boolean
-}
-
-input Post_Meta_Image_url_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input Post_Meta_Image_filename_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input Post_Meta_Image_mimeType_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input Post_Meta_Image_filesize_operator {
-  equals: Float
-  not_equals: Float
-  greater_than_equal: Float
-  greater_than: Float
-  less_than_equal: Float
-  less_than: Float
-  exists: Boolean
-}
-
-input Post_Meta_Image_width_operator {
-  equals: Float
-  not_equals: Float
-  greater_than_equal: Float
-  greater_than: Float
-  less_than_equal: Float
-  less_than: Float
-  exists: Boolean
-}
-
-input Post_Meta_Image_height_operator {
-  equals: Float
-  not_equals: Float
-  greater_than_equal: Float
-  greater_than: Float
-  less_than_equal: Float
-  less_than: Float
-  exists: Boolean
-}
-
-input Post_Meta_Image_id_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input Post_Meta_Image_where_and {
-  alt: Post_Meta_Image_alt_operator
-  caption: Post_Meta_Image_caption_operator
-  updatedAt: Post_Meta_Image_updatedAt_operator
-  createdAt: Post_Meta_Image_createdAt_operator
-  url: Post_Meta_Image_url_operator
-  filename: Post_Meta_Image_filename_operator
-  mimeType: Post_Meta_Image_mimeType_operator
-  filesize: Post_Meta_Image_filesize_operator
-  width: Post_Meta_Image_width_operator
-  height: Post_Meta_Image_height_operator
-  id: Post_Meta_Image_id_operator
-  AND: [Post_Meta_Image_where_and]
-  OR: [Post_Meta_Image_where_or]
-}
-
-input Post_Meta_Image_where_or {
-  alt: Post_Meta_Image_alt_operator
-  caption: Post_Meta_Image_caption_operator
-  updatedAt: Post_Meta_Image_updatedAt_operator
-  createdAt: Post_Meta_Image_createdAt_operator
-  url: Post_Meta_Image_url_operator
-  filename: Post_Meta_Image_filename_operator
-  mimeType: Post_Meta_Image_mimeType_operator
-  filesize: Post_Meta_Image_filesize_operator
-  width: Post_Meta_Image_width_operator
-  height: Post_Meta_Image_height_operator
-  id: Post_Meta_Image_id_operator
-  AND: [Post_Meta_Image_where_and]
-  OR: [Post_Meta_Image_where_or]
-}
-
-enum Post__status {
-  draft
-  published
-}
+union ArchiveCarousel_SelectedDocs = Post | Project
 
 type Project {
   id: Int
@@ -1245,7 +1110,7 @@ type Project {
   categories: [Category!]
   publishedAt: DateTime
   hero: Project_Hero
-  layout: [Project_Layout!]!
+  layout: [Project_Layout!]
   relatedProjects: [Project!]
   slug: String
   meta: Project_Meta
@@ -1640,6 +1505,193 @@ input Project_Meta_Image_where_or {
 }
 
 enum Project__status {
+  draft
+  published
+}
+
+type ArchiveCarousel_PopulatedDocs_Relationship {
+  relationTo: ArchiveCarousel_PopulatedDocs_RelationTo
+  value: ArchiveCarousel_PopulatedDocs
+}
+
+enum ArchiveCarousel_PopulatedDocs_RelationTo {
+  posts
+  projects
+}
+
+union ArchiveCarousel_PopulatedDocs = Post | Project
+
+union Post_PremiumContent = Cta | Content | MediaBlock | Archive | ArchiveCarousel
+
+type Post_Meta {
+  title: String
+  description: String
+  image(where: Post_Meta_Image_where): Media
+}
+
+input Post_Meta_Image_where {
+  alt: Post_Meta_Image_alt_operator
+  caption: Post_Meta_Image_caption_operator
+  updatedAt: Post_Meta_Image_updatedAt_operator
+  createdAt: Post_Meta_Image_createdAt_operator
+  url: Post_Meta_Image_url_operator
+  filename: Post_Meta_Image_filename_operator
+  mimeType: Post_Meta_Image_mimeType_operator
+  filesize: Post_Meta_Image_filesize_operator
+  width: Post_Meta_Image_width_operator
+  height: Post_Meta_Image_height_operator
+  id: Post_Meta_Image_id_operator
+  AND: [Post_Meta_Image_where_and]
+  OR: [Post_Meta_Image_where_or]
+}
+
+input Post_Meta_Image_alt_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input Post_Meta_Image_caption_operator {
+  equals: JSON
+  not_equals: JSON
+  like: JSON
+  contains: JSON
+  exists: Boolean
+}
+
+input Post_Meta_Image_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Post_Meta_Image_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Post_Meta_Image_url_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Post_Meta_Image_filename_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Post_Meta_Image_mimeType_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Post_Meta_Image_filesize_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input Post_Meta_Image_width_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input Post_Meta_Image_height_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input Post_Meta_Image_id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Post_Meta_Image_where_and {
+  alt: Post_Meta_Image_alt_operator
+  caption: Post_Meta_Image_caption_operator
+  updatedAt: Post_Meta_Image_updatedAt_operator
+  createdAt: Post_Meta_Image_createdAt_operator
+  url: Post_Meta_Image_url_operator
+  filename: Post_Meta_Image_filename_operator
+  mimeType: Post_Meta_Image_mimeType_operator
+  filesize: Post_Meta_Image_filesize_operator
+  width: Post_Meta_Image_width_operator
+  height: Post_Meta_Image_height_operator
+  id: Post_Meta_Image_id_operator
+  AND: [Post_Meta_Image_where_and]
+  OR: [Post_Meta_Image_where_or]
+}
+
+input Post_Meta_Image_where_or {
+  alt: Post_Meta_Image_alt_operator
+  caption: Post_Meta_Image_caption_operator
+  updatedAt: Post_Meta_Image_updatedAt_operator
+  createdAt: Post_Meta_Image_createdAt_operator
+  url: Post_Meta_Image_url_operator
+  filename: Post_Meta_Image_filename_operator
+  mimeType: Post_Meta_Image_mimeType_operator
+  filesize: Post_Meta_Image_filesize_operator
+  width: Post_Meta_Image_width_operator
+  height: Post_Meta_Image_height_operator
+  id: Post_Meta_Image_id_operator
+  AND: [Post_Meta_Image_where_and]
+  OR: [Post_Meta_Image_where_or]
+}
+
+enum Post__status {
   draft
   published
 }
@@ -2076,6 +2128,7 @@ input Page_hero__title_operator {
   in: [String]
   not_in: [String]
   all: [String]
+  exists: Boolean
 }
 
 input Page_hero__subtitle_operator {
@@ -2109,6 +2162,7 @@ input Page_hero__richText_operator {
   not_equals: JSON
   like: JSON
   contains: JSON
+  exists: Boolean
 }
 
 input Page_hero__links__link__type_operator {
@@ -2189,6 +2243,7 @@ input Page_hero__links__id_operator {
 input Page_hero__media_operator {
   equals: String
   not_equals: String
+  exists: Boolean
 }
 
 input Page_slug_operator {
@@ -3245,7 +3300,7 @@ input PageVersion_Version_Hero_Media_where_or {
   OR: [PageVersion_Version_Hero_Media_where_or]
 }
 
-union PageVersion_Version_Layout = Cta | Content | MediaBlock | Archive | Slider
+union PageVersion_Version_Layout = Cta | Content | MediaBlock | Archive | ArchiveCarousel | Slider
 
 type PageVersion_Version_Meta {
   title: String
@@ -3503,6 +3558,7 @@ input versionsPage_version__hero__title_operator {
   in: [String]
   not_in: [String]
   all: [String]
+  exists: Boolean
 }
 
 input versionsPage_version__hero__subtitle_operator {
@@ -3536,6 +3592,7 @@ input versionsPage_version__hero__richText_operator {
   not_equals: JSON
   like: JSON
   contains: JSON
+  exists: Boolean
 }
 
 input versionsPage_version__hero__links__link__type_operator {
@@ -3616,6 +3673,7 @@ input versionsPage_version__hero__links__id_operator {
 input versionsPage_version__hero__media_operator {
   equals: String
   not_equals: String
+  exists: Boolean
 }
 
 input versionsPage_version__slug_operator {
@@ -3906,6 +3964,7 @@ input Post_hero__title_operator {
   in: [String]
   not_in: [String]
   all: [String]
+  exists: Boolean
 }
 
 input Post_hero__subtitle_operator {
@@ -3939,6 +3998,7 @@ input Post_hero__richText_operator {
   not_equals: JSON
   like: JSON
   contains: JSON
+  exists: Boolean
 }
 
 input Post_hero__links__link__type_operator {
@@ -4019,6 +4079,7 @@ input Post_hero__links__id_operator {
 input Post_hero__media_operator {
   equals: String
   not_equals: String
+  exists: Boolean
 }
 
 input Post_enablePremiumContent_operator {
@@ -5304,9 +5365,9 @@ input PostVersion_Version_Hero_Media_where_or {
   OR: [PostVersion_Version_Hero_Media_where_or]
 }
 
-union PostVersion_Version_Layout = Cta | Content | MediaBlock | Archive
+union PostVersion_Version_Layout = Cta | Content | MediaBlock | Archive | ArchiveCarousel
 
-union PostVersion_Version_PremiumContent = Cta | Content | MediaBlock | Archive
+union PostVersion_Version_PremiumContent = Cta | Content | MediaBlock | Archive | ArchiveCarousel
 
 type PostVersion_Version_Meta {
   title: String
@@ -5610,6 +5671,7 @@ input versionsPost_version__hero__title_operator {
   in: [String]
   not_in: [String]
   all: [String]
+  exists: Boolean
 }
 
 input versionsPost_version__hero__subtitle_operator {
@@ -5643,6 +5705,7 @@ input versionsPost_version__hero__richText_operator {
   not_equals: JSON
   like: JSON
   contains: JSON
+  exists: Boolean
 }
 
 input versionsPost_version__hero__links__link__type_operator {
@@ -5723,6 +5786,7 @@ input versionsPost_version__hero__links__id_operator {
 input versionsPost_version__hero__media_operator {
   equals: String
   not_equals: String
+  exists: Boolean
 }
 
 input versionsPost_version__enablePremiumContent_operator {
@@ -6005,6 +6069,7 @@ input Project_hero__title_operator {
   in: [String]
   not_in: [String]
   all: [String]
+  exists: Boolean
 }
 
 input Project_hero__subtitle_operator {
@@ -6038,6 +6103,7 @@ input Project_hero__richText_operator {
   not_equals: JSON
   like: JSON
   contains: JSON
+  exists: Boolean
 }
 
 input Project_hero__links__link__type_operator {
@@ -6118,6 +6184,7 @@ input Project_hero__links__id_operator {
 input Project_hero__media_operator {
   equals: String
   not_equals: String
+  exists: Boolean
 }
 
 input Project_relatedProjects_operator {
@@ -7008,7 +7075,7 @@ type ProjectVersion_Version {
   categories: [Category!]
   publishedAt: DateTime
   hero: ProjectVersion_Version_Hero
-  layout: [ProjectVersion_Version_Layout!]!
+  layout: [ProjectVersion_Version_Layout!]
   relatedProjects: [Project!]
   slug: String
   meta: ProjectVersion_Version_Meta
@@ -7501,6 +7568,7 @@ input versionsProject_version__hero__title_operator {
   in: [String]
   not_in: [String]
   all: [String]
+  exists: Boolean
 }
 
 input versionsProject_version__hero__subtitle_operator {
@@ -7534,6 +7602,7 @@ input versionsProject_version__hero__richText_operator {
   not_equals: JSON
   like: JSON
   contains: JSON
+  exists: Boolean
 }
 
 input versionsProject_version__hero__links__link__type_operator {
@@ -7614,6 +7683,7 @@ input versionsProject_version__hero__links__id_operator {
 input versionsProject_version__hero__media_operator {
   equals: String
   not_equals: String
+  exists: Boolean
 }
 
 input versionsProject_version__relatedProjects_operator {
@@ -17356,10 +17426,10 @@ input mutationPageInput {
 }
 
 input mutationPage_HeroInput {
-  title: String!
+  title: String
   subtitle: String
   type: Page_Hero_type_MutationInput!
-  richText: JSON!
+  richText: JSON
   links: [mutationPage_Hero_LinksInput]
   media: String
 }
@@ -17425,10 +17495,10 @@ input mutationPageUpdateInput {
 }
 
 input mutationPageUpdate_HeroInput {
-  title: String!
+  title: String
   subtitle: String
   type: PageUpdate_Hero_type_MutationInput!
-  richText: JSON!
+  richText: JSON
   links: [mutationPageUpdate_Hero_LinksInput]
   media: String
 }
@@ -17505,10 +17575,10 @@ input mutationPost_PopulatedAuthorsInput {
 }
 
 input mutationPost_HeroInput {
-  title: String!
+  title: String
   subtitle: String
   type: Post_Hero_type_MutationInput!
-  richText: JSON!
+  richText: JSON
   links: [mutationPost_Hero_LinksInput]
   media: String
 }
@@ -17585,10 +17655,10 @@ input mutationPostUpdate_PopulatedAuthorsInput {
 }
 
 input mutationPostUpdate_HeroInput {
-  title: String!
+  title: String
   subtitle: String
   type: PostUpdate_Hero_type_MutationInput!
-  richText: JSON!
+  richText: JSON
   links: [mutationPostUpdate_Hero_LinksInput]
   media: String
 }
@@ -17656,10 +17726,10 @@ input mutationProjectInput {
 }
 
 input mutationProject_HeroInput {
-  title: String!
+  title: String
   subtitle: String
   type: Project_Hero_type_MutationInput!
-  richText: JSON!
+  richText: JSON
   links: [mutationProject_Hero_LinksInput]
   media: String
 }
@@ -17727,10 +17797,10 @@ input mutationProjectUpdateInput {
 }
 
 input mutationProjectUpdate_HeroInput {
-  title: String!
+  title: String
   subtitle: String
   type: ProjectUpdate_Hero_type_MutationInput!
-  richText: JSON!
+  richText: JSON
   links: [mutationProjectUpdate_Hero_LinksInput]
   media: String
 }

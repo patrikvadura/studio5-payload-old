@@ -2,12 +2,12 @@ import React from 'react'
 
 import { CollectionArchive } from '../../_components/CollectionArchive/Slider'
 import RichText from '../../_components/RichText'
-import { ArchiveBlockProps } from './types'
+import { ArchiveCarouselProps } from './types'
 
 import classes from './index.module.scss'
 
-export const ArchiveBlock: React.FC<
-  ArchiveBlockProps & {
+export const ArchiveCarousel: React.FC<
+  ArchiveCarouselProps & {
     id?: string
   }
 > = props => {
@@ -15,7 +15,6 @@ export const ArchiveBlock: React.FC<
     title,
     subtitle,
     introContent,
-    id,
     relationTo,
     populateBy,
     limit,

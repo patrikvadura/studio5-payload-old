@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 
 import { Page } from '../../../payload/payload-types.js'
 import { ArchiveBlock } from '../../_blocks/ArchiveBlock'
+import { ArchiveCarousel } from '../../_blocks/ArchiveCarousel'
 import { CallToActionBlock } from '../../_blocks/CallToAction'
 import { CommentsBlock, type CommentsBlockProps } from '../../_blocks/Comments/index'
 import { ContentBlock } from '../../_blocks/Content'
@@ -17,6 +18,7 @@ const blockComponents = {
   content: ContentBlock,
   mediaBlock: MediaBlock,
   archive: ArchiveBlock,
+  archiveCarousel: ArchiveCarousel,
   relatedPosts: RelatedPosts,
   comments: CommentsBlock,
   slider: Slider,

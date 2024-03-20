@@ -11,9 +11,22 @@ export const Archive: Block = {
   imageURL:
     'https://res.cloudinary.com/patrik-vadura/image/upload/v1710759851/Payload/Blocks/block_archive_s2hhtn.webp',
   fields: [
+    {
+      name: 'title',
+      label: 'Nadpis sekce',
+      type: 'text',
+      required: false,
+    },
+    {
+      name: 'subtitle',
+      label: 'Podnadpis',
+      type: 'text',
+      required: false,
+    },
     richText({
       name: 'introContent',
       label: 'Úvodní popis',
+      required: false,
     }),
     {
       name: 'populateBy',

@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Page } from '../../../payload/payload-types'
 import { Media } from '../../_components/Media'
 import RichText from '../../_components/RichText'
+import { Icon } from '@iconify/react'
 
 import classes from './index.module.scss'
 
@@ -44,7 +45,7 @@ export const Slider: React.FC<
                      <span class="${totalClass}"></span>`
           },
         }}
-        className={`${classes.slider}`}
+        className={`${classes.slider} py-16`}
       >
         {slides.map((slide, index) => (
           <SwiperSlide key={index} className={classes.swiperSlide}>
@@ -68,26 +69,10 @@ export const Slider: React.FC<
             <div className={`sliderPagination ${classes.sliderPagination}`}></div>
             <div className={classes.sliderNavigationWrap}>
               <div style={{ cursor: 'pointer' }} className={`${classes.sliderPrev} sliderPrev`}>
-                <svg
-                  width="82"
-                  height="24"
-                  viewBox="0 0 82 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M82 1H2L24 23" stroke="currentColor" />
-                </svg>
+                <Icon icon="material-symbols-light:arrow-left-alt" className="text-5xl" />
               </div>
               <div style={{ cursor: 'pointer' }} className={`${classes.sliderNext} sliderNext`}>
-                <svg
-                  width="82"
-                  height="24"
-                  viewBox="0 0 82 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M0 23H80L58 1" stroke="currentColor" />
-                </svg>
+                <Icon icon="material-symbols-light:arrow-right-alt" className="text-5xl" />
               </div>
             </div>
           </div>

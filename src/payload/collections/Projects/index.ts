@@ -14,9 +14,13 @@ import { revalidateProject } from './hooks/revalidateProject'
 
 export const Projects: CollectionConfig = {
   slug: 'projects',
+  labels: {
+    singular: 'Případová studie',
+    plural: 'Případové studie',
+  },
   admin: {
     useAsTitle: 'title',
-    defaultColumns: ['title', 'slug', 'updatedAt'],
+    defaultColumns: ['title', 'slug', 'updatedAt', 'id', '_status'],
     preview: doc => {
       return `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/next/preview?url=${encodeURIComponent(
         `${process.env.PAYLOAD_PUBLIC_SERVER_URL}/projects/${doc?.slug}`,
@@ -72,7 +76,7 @@ export const Projects: CollectionConfig = {
             {
               name: 'layout',
               type: 'blocks',
-              required: true,
+              required: false,
               blocks: [CallToAction, Content, MediaBlock, Archive],
             },
           ],

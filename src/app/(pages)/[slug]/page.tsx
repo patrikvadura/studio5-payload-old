@@ -9,7 +9,7 @@ import BrandHomeOne from '../../../components/brand/BrandHomeOne'
 import MarqueeAreaHomeOne from '../../../components/brand/MarqueeAreaHomeOne'
 import FunFactHomeOne from '../../../components/funfact/FunFactHomeOne'
 import HeroHomeOne from '../../../components/hero/HeroHomeOne'
-import PortfolioHomeOne from '../../../components/portfolio/PortfolioHomeOne'
+import Portfolio from '../../_components/Portfolio'
 import ServiceHomeOne from '../../../components/service/ServiceHomeOne'
 import Testimonial from '../../../components/testimonial/Testimonial'
 import { Page } from '../../../payload/payload-types'
@@ -58,9 +58,7 @@ export default async function Page({ params: { slug = 'home' } }) {
       />
 
       <MarqueeAreaHomeOne />
-      {/*<About />*/}
       {/*<ServiceHomeOne />*/}
-      {/*<PortfolioHomeOne />*/}
       {/*<AwardsHomeOne />*/}
       {/*<Testimonial />*/}
       {/*<FunFactHomeOne />*/}

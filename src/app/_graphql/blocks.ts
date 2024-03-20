@@ -52,6 +52,8 @@ export const MEDIA_BLOCK = `
 export const ARCHIVE_BLOCK = `
 ...on Archive {
   blockType
+  title
+  subtitle
   introContent
   populateBy
   relationTo

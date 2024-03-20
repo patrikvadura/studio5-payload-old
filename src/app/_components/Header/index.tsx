@@ -49,7 +49,7 @@ const Header = ({ header }: { header: Header }) => {
             <NavbarItem key={i}>
               <NavItem
                 link={navItem.link}
-                className="text-sm !text-secondary hover:!text-primary font-semibold !opacity-100"
+                className="text-sm !text-secondary hover:!text-primary no-underline font-semibold !opacity-100"
               />
             </NavbarItem>
           ))}
@@ -72,7 +72,7 @@ const Header = ({ header }: { header: Header }) => {
         <NavbarMenu className="flex flex-col justify-center items-center">
           {navItems.map((navItem, i) => (
             <NavbarMenuItem key={i}>
-              <NavItem link={navItem.link} className="text-3xl font-semibold" />
+              <NavItem link={navItem.link} className="text-3xl font-semibold no-underline" />
             </NavbarMenuItem>
           ))}
         </NavbarMenu>

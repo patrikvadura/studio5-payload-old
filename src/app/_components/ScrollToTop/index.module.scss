@@ -1,0 +1,16 @@
+.scrollToTop {
+  @apply fixed cursor-pointer shadow rounded-full flex justify-center items-center p-1 size-12 -bottom-16 right-10 text-white text-xl bg-secondary;
+
+  transition: all .4s ease;
+  z-index: 10;
+
+  &:hover {
+    @apply bg-primary text-secondary;
+  }
+
+  &Show {
+    @apply bottom-12;
+
+    z-index: 999999;
+  }
+}

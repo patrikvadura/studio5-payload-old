@@ -2,11 +2,9 @@ import React from 'react'
 import { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 
-import Wrapper from '../layouts/Wrapper'
 import { Footer } from './_components/Footer'
 import FetchHeader from './_components/Header/FetchHeader'
 import { Providers } from './_providers'
-import { InitTheme } from './_providers/Theme/InitTheme'
 import { mergeOpenGraph } from './_utilities/mergeOpenGraph'
 
 const defaultFont: NextFont = Poppins({
@@ -23,24 +21,21 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <InitTheme />
         <link rel="icon" href="/assets/img/favicon.svg" />
       </head>
 
       <body className={`${defaultFont.className}`}>
         <Providers>
-          <Wrapper>
-            <div id="smooth-wrapper">
-              <div id="smooth-content">
-                <main>
-                  <FetchHeader />
-                  {children}
-                </main>
-                {/* @ts-expect-error */}
-                <Footer />
-              </div>
+          <div id="smooth-wrapper">
+            <div id="smooth-content">
+              <main>
+                <FetchHeader />
+                {children}
+              </main>
+              {/* @ts-expect-error */}
+              <Footer />
             </div>
-          </Wrapper>
+          </div>
         </Providers>
       </body>
     </html>
@@ -48,10 +43,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SERVER_URL || 'https://payloadcms.com'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SERVER_URL || "https://payloadcms.com"),
   twitter: {
-    card: 'summary_large_image',
-    creator: '@payloadcms',
+    card: "summary_large_image",
+    creator: "@payloadcms",
   },
   openGraph: mergeOpenGraph(),
 }

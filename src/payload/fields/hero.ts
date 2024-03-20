@@ -14,7 +14,7 @@ export const hero: Field = {
       name: 'title',
       label: 'Nadpis sekce',
       type: 'text',
-      required: true,
+      required: false,
     },
     {
       name: 'subtitle',
@@ -30,7 +30,7 @@ export const hero: Field = {
       name: 'type',
       label: 'Type',
       required: true,
-      defaultValue: 'lowImpact',
+      defaultValue: 'none',
       options: [
         {
           label: 'None',
@@ -51,6 +51,7 @@ export const hero: Field = {
       ],
     },
     richText({
+      required: false,
       admin: {
         elements: ['h1', largeBody, label, 'link'],
         leaves: [],
@@ -65,7 +66,7 @@ export const hero: Field = {
       name: 'media',
       type: 'upload',
       relationTo: 'media',
-      required: true,
+      required: false,
       admin: {
         condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
       },

@@ -70,7 +70,7 @@
   }
 
   &NavigationWrap {
-    @apply flex items-center;
+    @apply flex items-center space-x-4;
   }
 
   &Pagination {
@@ -78,10 +78,8 @@
   }
 
   &Prev {
-    margin-top: 22px;
   }
+
   &Next {
-    margin-bottom: 22px;
-    margin-left: 30px;
   }
 }

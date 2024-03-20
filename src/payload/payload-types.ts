@@ -36,12 +36,14 @@ export interface Page {
   title: string;
   publishedAt?: string | null;
   hero: {
-    title: string;
+    title?: string | null;
     subtitle?: string | null;
     type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
-    richText: {
-      [k: string]: unknown;
-    }[];
+    richText?:
+      | {
+          [k: string]: unknown;
+        }[]
+      | null;
     links?:
       | {
           link: {
@@ -124,9 +126,13 @@ export interface Page {
             blockType: 'mediaBlock';
           }
         | {
-            introContent: {
-              [k: string]: unknown;
-            }[];
+            title?: string | null;
+            subtitle?: string | null;
+            introContent?:
+              | {
+                  [k: string]: unknown;
+                }[]
+              | null;
             populateBy?: ('collection' | 'selection') | null;
             relationTo?: ('posts' | 'projects') | null;
             categories?: (number | Category)[] | null;
@@ -159,6 +165,47 @@ export interface Page {
             id?: string | null;
             blockName?: string | null;
             blockType: 'archive';
+          }
+        | {
+            title?: string | null;
+            subtitle?: string | null;
+            introContent?:
+              | {
+                  [k: string]: unknown;
+                }[]
+              | null;
+            populateBy?: ('collection' | 'selection') | null;
+            relationTo?: ('posts' | 'projects') | null;
+            categories?: (number | Category)[] | null;
+            limit?: number | null;
+            selectedDocs?:
+              | (
+                  | {
+                      relationTo: 'posts';
+                      value: number | Post;
+                    }
+                  | {
+                      relationTo: 'projects';
+                      value: number | Project;
+                    }
+                )[]
+              | null;
+            populatedDocs?:
+              | (
+                  | {
+                      relationTo: 'posts';
+                      value: number | Post;
+                    }
+                  | {
+                      relationTo: 'projects';
+                      value: number | Project;
+                    }
+                )[]
+              | null;
+            populatedDocsTotal?: number | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'archiveCarousel';
           }
         | {
             slides?:
@@ -245,12 +292,14 @@ export interface Post {
       }[]
     | null;
   hero: {
-    title: string;
+    title?: string | null;
     subtitle?: string | null;
     type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
-    richText: {
-      [k: string]: unknown;
-    }[];
+    richText?:
+      | {
+          [k: string]: unknown;
+        }[]
+      | null;
     links?:
       | {
           link: {
@@ -332,9 +381,13 @@ export interface Post {
         blockType: 'mediaBlock';
       }
     | {
-        introContent: {
-          [k: string]: unknown;
-        }[];
+        title?: string | null;
+        subtitle?: string | null;
+        introContent?:
+          | {
+              [k: string]: unknown;
+            }[]
+          | null;
         populateBy?: ('collection' | 'selection') | null;
         relationTo?: ('posts' | 'projects') | null;
         categories?: (number | Category)[] | null;
@@ -367,6 +420,47 @@ export interface Post {
         id?: string | null;
         blockName?: string | null;
         blockType: 'archive';
+      }
+    | {
+        title?: string | null;
+        subtitle?: string | null;
+        introContent?:
+          | {
+              [k: string]: unknown;
+            }[]
+          | null;
+        populateBy?: ('collection' | 'selection') | null;
+        relationTo?: ('posts' | 'projects') | null;
+        categories?: (number | Category)[] | null;
+        limit?: number | null;
+        selectedDocs?:
+          | (
+              | {
+                  relationTo: 'posts';
+                  value: number | Post;
+                }
+              | {
+                  relationTo: 'projects';
+                  value: number | Project;
+                }
+            )[]
+          | null;
+        populatedDocs?:
+          | (
+              | {
+                  relationTo: 'posts';
+                  value: number | Post;
+                }
+              | {
+                  relationTo: 'projects';
+                  value: number | Project;
+                }
+            )[]
+          | null;
+        populatedDocsTotal?: number | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'archiveCarousel';
       }
   )[];
   enablePremiumContent?: boolean | null;
@@ -434,9 +528,13 @@ export interface Post {
             blockType: 'mediaBlock';
           }
         | {
-            introContent: {
-              [k: string]: unknown;
-            }[];
+            title?: string | null;
+            subtitle?: string | null;
+            introContent?:
+              | {
+                  [k: string]: unknown;
+                }[]
+              | null;
             populateBy?: ('collection' | 'selection') | null;
             relationTo?: ('posts' | 'projects') | null;
             categories?: (number | Category)[] | null;
@@ -469,6 +567,47 @@ export interface Post {
             id?: string | null;
             blockName?: string | null;
             blockType: 'archive';
+          }
+        | {
+            title?: string | null;
+            subtitle?: string | null;
+            introContent?:
+              | {
+                  [k: string]: unknown;
+                }[]
+              | null;
+            populateBy?: ('collection' | 'selection') | null;
+            relationTo?: ('posts' | 'projects') | null;
+            categories?: (number | Category)[] | null;
+            limit?: number | null;
+            selectedDocs?:
+              | (
+                  | {
+                      relationTo: 'posts';
+                      value: number | Post;
+                    }
+                  | {
+                      relationTo: 'projects';
+                      value: number | Project;
+                    }
+                )[]
+              | null;
+            populatedDocs?:
+              | (
+                  | {
+                      relationTo: 'posts';
+                      value: number | Post;
+                    }
+                  | {
+                      relationTo: 'projects';
+                      value: number | Project;
+                    }
+                )[]
+              | null;
+            populatedDocsTotal?: number | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'archiveCarousel';
           }
       )[]
     | null;
@@ -512,12 +651,14 @@ export interface Project {
   categories?: (number | Category)[] | null;
   publishedAt?: string | null;
   hero: {
-    title: string;
+    title?: string | null;
     subtitle?: string | null;
     type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
-    richText: {
-      [k: string]: unknown;
-    }[];
+    richText?:
+      | {
+          [k: string]: unknown;
+        }[]
+      | null;
     links?:
       | {
           link: {
@@ -536,106 +677,112 @@ export interface Project {
       | null;
     media?: number | Media | null;
   };
-  layout: (
-    | {
-        invertBackground?: boolean | null;
-        richText: {
-          [k: string]: unknown;
-        }[];
-        links?:
-          | {
-              link: {
-                type?: ('reference' | 'custom') | null;
-                newTab?: boolean | null;
-                reference?: {
-                  relationTo: 'pages';
-                  value: number | Page;
-                } | null;
-                url?: string | null;
-                label: string;
-                appearance?: ('primary' | 'secondary') | null;
-              };
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'cta';
-      }
-    | {
-        invertBackground?: boolean | null;
-        columns?:
-          | {
-              size?: ('oneFourth' | 'oneThird' | 'half' | 'twoThirds' | 'threeFourth' | 'full') | null;
-              richText: {
-                [k: string]: unknown;
-              }[];
-              media?: number | Media | null;
-              enableLink?: boolean | null;
-              link?: {
-                type?: ('reference' | 'custom') | null;
-                newTab?: boolean | null;
-                reference?: {
-                  relationTo: 'pages';
-                  value: number | Page;
-                } | null;
-                url?: string | null;
-                label: string;
-                appearance?: ('default' | 'hero' | 'primary' | 'secondary') | null;
-              };
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'content';
-      }
-    | {
-        invertBackground?: boolean | null;
-        position?: ('default' | 'fullscreen') | null;
-        media: number | Media;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'mediaBlock';
-      }
-    | {
-        introContent: {
-          [k: string]: unknown;
-        }[];
-        populateBy?: ('collection' | 'selection') | null;
-        relationTo?: ('posts' | 'projects') | null;
-        categories?: (number | Category)[] | null;
-        limit?: number | null;
-        selectedDocs?:
-          | (
+  layout?:
+    | (
+        | {
+            invertBackground?: boolean | null;
+            richText: {
+              [k: string]: unknown;
+            }[];
+            links?:
               | {
-                  relationTo: 'posts';
-                  value: number | Post;
-                }
+                  link: {
+                    type?: ('reference' | 'custom') | null;
+                    newTab?: boolean | null;
+                    reference?: {
+                      relationTo: 'pages';
+                      value: number | Page;
+                    } | null;
+                    url?: string | null;
+                    label: string;
+                    appearance?: ('primary' | 'secondary') | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'cta';
+          }
+        | {
+            invertBackground?: boolean | null;
+            columns?:
               | {
-                  relationTo: 'projects';
-                  value: number | Project;
-                }
-            )[]
-          | null;
-        populatedDocs?:
-          | (
+                  size?: ('oneFourth' | 'oneThird' | 'half' | 'twoThirds' | 'threeFourth' | 'full') | null;
+                  richText: {
+                    [k: string]: unknown;
+                  }[];
+                  media?: number | Media | null;
+                  enableLink?: boolean | null;
+                  link?: {
+                    type?: ('reference' | 'custom') | null;
+                    newTab?: boolean | null;
+                    reference?: {
+                      relationTo: 'pages';
+                      value: number | Page;
+                    } | null;
+                    url?: string | null;
+                    label: string;
+                    appearance?: ('default' | 'hero' | 'primary' | 'secondary') | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'content';
+          }
+        | {
+            invertBackground?: boolean | null;
+            position?: ('default' | 'fullscreen') | null;
+            media: number | Media;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'mediaBlock';
+          }
+        | {
+            title?: string | null;
+            subtitle?: string | null;
+            introContent?:
               | {
-                  relationTo: 'posts';
-                  value: number | Post;
-                }
-              | {
-                  relationTo: 'projects';
-                  value: number | Project;
-                }
-            )[]
-          | null;
-        populatedDocsTotal?: number | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'archive';
-      }
-  )[];
+                  [k: string]: unknown;
+                }[]
+              | null;
+            populateBy?: ('collection' | 'selection') | null;
+            relationTo?: ('posts' | 'projects') | null;
+            categories?: (number | Category)[] | null;
+            limit?: number | null;
+            selectedDocs?:
+              | (
+                  | {
+                      relationTo: 'posts';
+                      value: number | Post;
+                    }
+                  | {
+                      relationTo: 'projects';
+                      value: number | Project;
+                    }
+                )[]
+              | null;
+            populatedDocs?:
+              | (
+                  | {
+                      relationTo: 'posts';
+                      value: number | Post;
+                    }
+                  | {
+                      relationTo: 'projects';
+                      value: number | Project;
+                    }
+                )[]
+              | null;
+            populatedDocsTotal?: number | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'archive';
+          }
+      )[]
+    | null;
   relatedProjects?: (number | Project)[] | null;
   slug?: string | null;
   meta?: {
