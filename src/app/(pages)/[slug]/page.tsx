@@ -9,17 +9,14 @@ import BrandHomeOne from '../../../components/brand/BrandHomeOne'
 import MarqueeAreaHomeOne from '../../../components/brand/MarqueeAreaHomeOne'
 import FunFactHomeOne from '../../../components/funfact/FunFactHomeOne'
 import HeroHomeOne from '../../../components/hero/HeroHomeOne'
-import ServiceHomeOne from '../../../components/service/ServiceHomeOne'
 import Testimonial from '../../../components/testimonial/Testimonial'
 import { Page } from '../../../payload/payload-types'
 import { staticHome } from '../../../payload/seed/home-static'
 import { fetchDoc } from '../../_api/fetchDoc'
 import { fetchDocs } from '../../_api/fetchDocs'
-import { Slider } from '../../_blocks/Slider'
-import About from '../../_components/about'
 import { Blocks } from '../../_components/Blocks'
 import { Hero } from '../../_components/Hero'
-import Portfolio from '../../_components/Portfolio'
+import Service from '../../_components/Service'
 import { generateMeta } from '../../_utilities/generateMeta'
 
 export const dynamic = 'force-dynamic'
@@ -57,7 +54,7 @@ export default async function Page({ params: { slug = 'home' } }) {
         disableTopPadding={!hero || hero?.type === 'none' || hero?.type === 'lowImpact'}
       />
 
-      {/*<ServiceHomeOne />*/}
+      <Service />
       {/*<AwardsHomeOne />*/}
       {/*<Testimonial />*/}
       {/*<FunFactHomeOne />*/}

@@ -9,20 +9,6 @@
 }
 
 .title {
-  @apply mb-12 text-5xl font-bold animate-fade-up animate-once animate-ease-in;
-}
-
-.slider {
-  @apply pt-8 flex items-center space-x-4;
-
-  &Pagination {
-    @apply w-auto mr-12 text-secondary text-xl font-bold;
-  }
-
-  &Prev {
-  }
-
-  &Next {
-  }
+  @apply mb-12 text-5xl leading-[1.3] font-bold animate-fade-up animate-once animate-ease-in;
 }
 

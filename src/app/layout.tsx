@@ -43,10 +43,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SERVER_URL || "https://payloadcms.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SERVER_URL || 'https://payloadcms.com'),
   twitter: {
-    card: "summary_large_image",
-    creator: "@payloadcms",
+    card: 'summary_large_image',
+    creator: '@payloadcms',
   },
   openGraph: mergeOpenGraph(),
 }

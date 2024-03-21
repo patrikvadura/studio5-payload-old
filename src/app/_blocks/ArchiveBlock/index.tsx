@@ -33,12 +33,10 @@ export const ArchiveBlock: React.FC<
       <div className="py-16">
         {(title || subtitle || introContent) && (
           <div className="container my-16">
-            <div className="cs_section_heading cs_style_1 cs_type_2">
-              <div className="cs_section_heading_text">
-                {subtitle && <div className={classes.subtitle}>{subtitle}</div>}
-                {title && <h2 className={classes.title}>{title}</h2>}
-                {introContent && <RichText content={introContent} />}
-              </div>
+            <div className="max-w-screen-md mx-auto text-center">
+              {subtitle && <div className={classes.subtitle}>{subtitle}</div>}
+              {title && <h2 className={classes.title}>{title}</h2>}
+              {introContent && <RichText content={introContent} />}
             </div>
           </div>
         )}
