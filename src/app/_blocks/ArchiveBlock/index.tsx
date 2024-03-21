@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { CollectionArchive } from '../../_components/CollectionArchive/Slider'
+import { CollectionArchive } from '../../_components/CollectionArchive'
+import { CollectionSlider } from '../../_components/CollectionArchive/Slider'
 import RichText from '../../_components/RichText'
 import { ArchiveBlockProps } from './types'
 
@@ -15,7 +16,7 @@ export const ArchiveBlock: React.FC<
     title,
     subtitle,
     introContent,
-    id,
+    displayType,
     relationTo,
     populateBy,
     limit,
@@ -25,20 +26,24 @@ export const ArchiveBlock: React.FC<
     categories,
   } = props
 
+  const CollectionComponent = displayType === 'slider' ? CollectionSlider : CollectionArchive
+
   return (
     <div>
       <div className="py-16">
-        <div className="container my-16">
-          <div className="cs_section_heading cs_style_1 cs_type_2">
-            <div className="cs_section_heading_text">
-              <div className={classes.subtitle}>{subtitle}</div>
-              <h2 className={classes.title}>{title}</h2>
-              {introContent && <RichText content={introContent} />}
+        {(title || subtitle || introContent) && (
+          <div className="container my-16">
+            <div className="cs_section_heading cs_style_1 cs_type_2">
+              <div className="cs_section_heading_text">
+                {subtitle && <div className={classes.subtitle}>{subtitle}</div>}
+                {title && <h2 className={classes.title}>{title}</h2>}
+                {introContent && <RichText content={introContent} />}
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
-        <CollectionArchive
+        <CollectionComponent
           populateBy={populateBy}
           relationTo={relationTo}
           populatedDocs={populatedDocs}

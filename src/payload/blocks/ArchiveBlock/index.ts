@@ -29,6 +29,22 @@ export const Archive: Block = {
       required: false,
     }),
     {
+      type: 'select',
+      name: 'displayType',
+      label: 'Typ zobrazení',
+      defaultValue: 'grid',
+      options: [
+        {
+          label: 'Běžný výpis',
+          value: 'grid',
+        },
+        {
+          label: 'Slider',
+          value: 'slider',
+        },
+      ],
+    },
+    {
       name: 'populateBy',
       label: 'Zdroj obsahu',
       type: 'select',

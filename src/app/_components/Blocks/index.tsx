@@ -2,13 +2,13 @@ import React, { Fragment } from 'react'
 
 import { Page } from '../../../payload/payload-types.js'
 import { ArchiveBlock } from '../../_blocks/ArchiveBlock'
-import { ArchiveCarousel } from '../../_blocks/ArchiveCarousel'
 import { CallToActionBlock } from '../../_blocks/CallToAction'
-import { CommentsBlock, type CommentsBlockProps } from '../../_blocks/Comments/index'
+import { CommentsBlock, type CommentsBlockProps } from '../../_blocks/Comments'
 import { ContentBlock } from '../../_blocks/Content'
 import { MediaBlock } from '../../_blocks/MediaBlock'
 import { RelatedPosts, type RelatedPostsProps } from '../../_blocks/RelatedPosts'
 import { Slider } from '../../_blocks/Slider'
+import { SlidingText } from '../../_blocks/SlidingText'
 import { toKebabCase } from '../../_utilities/toKebabCase'
 import { BackgroundColor } from '../BackgroundColor'
 import { VerticalPadding, VerticalPaddingOptions } from '../VerticalPadding'
@@ -18,10 +18,10 @@ const blockComponents = {
   content: ContentBlock,
   mediaBlock: MediaBlock,
   archive: ArchiveBlock,
-  archiveCarousel: ArchiveCarousel,
   relatedPosts: RelatedPosts,
   comments: CommentsBlock,
   slider: Slider,
+  slidingText: SlidingText,
 }
 
 export const Blocks: React.FC<{

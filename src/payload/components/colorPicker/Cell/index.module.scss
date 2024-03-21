@@ -1,0 +1,11 @@
+.chip {
+  @apply border border-white rounded-full size-4 mr-2 shadow-none;
+
+  &--selected {
+    @apply shadow;
+  }
+
+  &--clickable {
+    @apply cursor-pointer;
+  }
+}

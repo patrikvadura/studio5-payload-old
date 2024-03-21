@@ -1,73 +1,27 @@
-@import '../../_css/common';
+.subtitle {
+  @apply relative inline-block mb-8 pl-6 text-lg text-secondary;
 
-// this is to make up for the space taken by the fixed header, since the scroll method does not accept an offset parameter
-.scrollRef {
-  position: absolute;
-  left: 0;
-  top: calc(var(--base) * -5);
-  @include mid-break {
-    top:  calc(var(--base) * -2);
+  &::before {
+    @apply top-[6px] left-0 size-4 rounded-full absolute bg-primary;
+
+    content: "";
   }
 }
 
-.introContent {
-  position: relative;
-  margin-bottom: calc(var(--base) * 2);
-
-  @include mid-break {
-    margin-bottom: var(--base);
-  }
+.title {
+  @apply mb-12 text-5xl font-bold animate-fade-up animate-once animate-ease-in;
 }
 
-.resultCountWrapper {
-  display: flex;
-  margin-bottom: calc(var(--base) * 2);
+.slider {
+  @apply pt-8 flex items-center space-x-4;
 
-  @include mid-break {
-    margin-bottom: var(--base);
-  }
-}
-
-.pageRange {
-  margin-bottom: var(--base);
-
-  @include mid-break {
-    margin-bottom: var(--base);
-  }
-}
-
-.list {
-  position: relative;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  width: 100%;
-  gap: var(--base) 40px;
-
-  @include mid-break {
-    grid-template-columns: repeat(6, 1fr);
-    gap: calc(var(--base) / 2) var(--base);
-  }
-}
-
-.column {
-  grid-column-end: span 4;
-
-  @include mid-break {
-    grid-column-end: span 6;
+  &Pagination {
+    @apply w-auto mr-12 text-secondary text-xl font-bold;
   }
 
-  @include small-break {
-    grid-column-end: span 6;
+  &Prev {
   }
-}
 
-.pagination {
-  margin-top: calc(var(--base) * 2);
-
-  @include mid-break {
-    margin-top: var(--base);
+  &Next {
   }
 }

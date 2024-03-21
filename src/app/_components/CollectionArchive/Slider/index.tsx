@@ -37,7 +37,7 @@ export type Props = {
   sort?: string
 }
 
-export const CollectionArchive: React.FC<Props> = props => {
+export const CollectionSlider: React.FC<Props> = props => {
   const {
     categories: catsFromProps,
     className,

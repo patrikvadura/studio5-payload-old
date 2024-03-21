@@ -1,14 +1,11 @@
 'use client'
 
-import React, { Fragment, useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import qs from 'qs'
 
 import type { Post, Project } from '../../../payload/payload-types'
 import type { ArchiveBlockProps } from '../../_blocks/ArchiveBlock/types'
-import { Card } from '../Card'
-import { Gutter } from '../Gutter'
-import { PageRange } from '../PageRange'
-import { Pagination } from '../Pagination'
+import { CardItem } from '../Card'
 
 import classes from './index.module.scss'
 
@@ -53,6 +50,7 @@ export const CollectionArchive: React.FC<Props> = props => {
   } = props
 
   const [results, setResults] = useState<Result>({
+    // @ts-ignore
     docs: (populateBy === 'collection'
       ? populatedDocs
       : populateBy === 'selection'
@@ -165,46 +163,20 @@ export const CollectionArchive: React.FC<Props> = props => {
   }, [page, categories, relationTo, onResultChange, sort, limit, populateBy])
 
   return (
-    <div className={[classes.collectionArchive, className].filter(Boolean).join(' ')}>
-      <div className={classes.scrollRef} ref={scrollRef} />
-      {!isLoading && error && <Gutter>{error}</Gutter>}
-      <Fragment>
-        {showPageRange !== false && populateBy !== 'selection' && (
-          <Gutter>
-            <div className={classes.pageRange}>
-              <PageRange
-                collection={relationTo}
-                currentPage={results.page}
-                limit={limit}
-                totalDocs={results.totalDocs}
-              />
-            </div>
-          </Gutter>
-        )}
-        <Gutter>
-          <div className={classes.grid}>
-            {results.docs?.map((result, index) => {
-              if (typeof result === 'object' && result !== null) {
-                return (
-                  <div className={classes.column} key={index}>
-                    <Card doc={result} relationTo={relationTo} showCategories />
-                  </div>
-                )
-              }
+    <>
+      <div className="container grid grid-cols-3 mb-16">
+        {results.docs?.map((result, index) => {
+          if (typeof result === 'object' && result !== null) {
+            return (
+              <div key={result.id} className="p-3">
+                <CardItem doc={result} relationTo={relationTo} showCategories />
+              </div>
+            )
+          }
 
-              return null
-            })}
-          </div>
-          {results.totalPages > 1 && populateBy !== 'selection' && (
-            <Pagination
-              className={classes.pagination}
-              onClick={setPage}
-              page={results.page}
-              totalPages={results.totalPages}
-            />
-          )}
-        </Gutter>
-      </Fragment>
-    </div>
+          return null
+        })}
+      </div>
+    </>
   )
 }

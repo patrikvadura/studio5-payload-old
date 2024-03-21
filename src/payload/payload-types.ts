@@ -133,6 +133,7 @@ export interface Page {
                   [k: string]: unknown;
                 }[]
               | null;
+            displayType?: ('grid' | 'slider') | null;
             populateBy?: ('collection' | 'selection') | null;
             relationTo?: ('posts' | 'projects') | null;
             categories?: (number | Category)[] | null;
@@ -167,47 +168,6 @@ export interface Page {
             blockType: 'archive';
           }
         | {
-            title?: string | null;
-            subtitle?: string | null;
-            introContent?:
-              | {
-                  [k: string]: unknown;
-                }[]
-              | null;
-            populateBy?: ('collection' | 'selection') | null;
-            relationTo?: ('posts' | 'projects') | null;
-            categories?: (number | Category)[] | null;
-            limit?: number | null;
-            selectedDocs?:
-              | (
-                  | {
-                      relationTo: 'posts';
-                      value: number | Post;
-                    }
-                  | {
-                      relationTo: 'projects';
-                      value: number | Project;
-                    }
-                )[]
-              | null;
-            populatedDocs?:
-              | (
-                  | {
-                      relationTo: 'posts';
-                      value: number | Post;
-                    }
-                  | {
-                      relationTo: 'projects';
-                      value: number | Project;
-                    }
-                )[]
-              | null;
-            populatedDocsTotal?: number | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'archiveCarousel';
-          }
-        | {
             slides?:
               | {
                   title: string;
@@ -222,6 +182,14 @@ export interface Page {
             id?: string | null;
             blockName?: string | null;
             blockType: 'slider';
+          }
+        | {
+            first: string;
+            second: string;
+            type?: ('outline' | 'solid') | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'slidingText';
           }
       )[]
     | null;
@@ -388,6 +356,7 @@ export interface Post {
               [k: string]: unknown;
             }[]
           | null;
+        displayType?: ('grid' | 'slider') | null;
         populateBy?: ('collection' | 'selection') | null;
         relationTo?: ('posts' | 'projects') | null;
         categories?: (number | Category)[] | null;
@@ -420,47 +389,6 @@ export interface Post {
         id?: string | null;
         blockName?: string | null;
         blockType: 'archive';
-      }
-    | {
-        title?: string | null;
-        subtitle?: string | null;
-        introContent?:
-          | {
-              [k: string]: unknown;
-            }[]
-          | null;
-        populateBy?: ('collection' | 'selection') | null;
-        relationTo?: ('posts' | 'projects') | null;
-        categories?: (number | Category)[] | null;
-        limit?: number | null;
-        selectedDocs?:
-          | (
-              | {
-                  relationTo: 'posts';
-                  value: number | Post;
-                }
-              | {
-                  relationTo: 'projects';
-                  value: number | Project;
-                }
-            )[]
-          | null;
-        populatedDocs?:
-          | (
-              | {
-                  relationTo: 'posts';
-                  value: number | Post;
-                }
-              | {
-                  relationTo: 'projects';
-                  value: number | Project;
-                }
-            )[]
-          | null;
-        populatedDocsTotal?: number | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'archiveCarousel';
       }
   )[];
   enablePremiumContent?: boolean | null;
@@ -535,6 +463,7 @@ export interface Post {
                   [k: string]: unknown;
                 }[]
               | null;
+            displayType?: ('grid' | 'slider') | null;
             populateBy?: ('collection' | 'selection') | null;
             relationTo?: ('posts' | 'projects') | null;
             categories?: (number | Category)[] | null;
@@ -567,47 +496,6 @@ export interface Post {
             id?: string | null;
             blockName?: string | null;
             blockType: 'archive';
-          }
-        | {
-            title?: string | null;
-            subtitle?: string | null;
-            introContent?:
-              | {
-                  [k: string]: unknown;
-                }[]
-              | null;
-            populateBy?: ('collection' | 'selection') | null;
-            relationTo?: ('posts' | 'projects') | null;
-            categories?: (number | Category)[] | null;
-            limit?: number | null;
-            selectedDocs?:
-              | (
-                  | {
-                      relationTo: 'posts';
-                      value: number | Post;
-                    }
-                  | {
-                      relationTo: 'projects';
-                      value: number | Project;
-                    }
-                )[]
-              | null;
-            populatedDocs?:
-              | (
-                  | {
-                      relationTo: 'posts';
-                      value: number | Post;
-                    }
-                  | {
-                      relationTo: 'projects';
-                      value: number | Project;
-                    }
-                )[]
-              | null;
-            populatedDocsTotal?: number | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'archiveCarousel';
           }
       )[]
     | null;
@@ -748,6 +636,7 @@ export interface Project {
                   [k: string]: unknown;
                 }[]
               | null;
+            displayType?: ('grid' | 'slider') | null;
             populateBy?: ('collection' | 'selection') | null;
             relationTo?: ('posts' | 'projects') | null;
             categories?: (number | Category)[] | null;

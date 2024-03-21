@@ -41,7 +41,7 @@ export const CardItem: React.FC<{
       <Card className="!bg-secondary h-[400px] group !relative">
         <CardHeader className="absolute z-10 top-1 flex-col !items-start space-y-4 p-8">
           {showCategories && hasCategories && (
-            <div className="text-white">
+            <div className="text-sm text-white">
               {showCategories && hasCategories && (
                 <div>
                   {categories?.map((category, index) => {
@@ -67,11 +67,7 @@ export const CardItem: React.FC<{
             </div>
           )}
 
-          {titleToUse && (
-            <h3 className="text-white font-bold text-3xl">
-              {titleToUse}
-            </h3>
-          )}
+          {titleToUse && <h3 className="text-white font-bold text-3xl">{titleToUse}</h3>}
 
           {description && (
             <div className="text-white">

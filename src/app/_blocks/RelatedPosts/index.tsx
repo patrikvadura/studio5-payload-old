@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Post, Project } from '../../../payload/payload-types'
-import { Card } from '../../_components/Card'
+import { CardItem } from '../../_components/Card'
 import { Gutter } from '../../_components/Gutter'
 import RichText from '../../_components/RichText'
 
@@ -41,7 +41,7 @@ export const RelatedPosts: React.FC<RelatedPostsProps> = props => {
                   .filter(Boolean)
                   .join(' ')}
               >
-                <Card relationTo={relationTo} doc={doc} showCategories />
+                <CardItem relationTo={relationTo} doc={doc} showCategories />
               </div>
             )
           })}

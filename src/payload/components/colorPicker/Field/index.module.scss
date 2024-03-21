@@ -1,0 +1,17 @@
+.picker {
+  &Colors {
+    @apply flex flex-wrap list-none p-0 m-0;
+  }
+}
+
+.chip {
+  @apply border border-white rounded-full size-4 mr-2 shadow-none;
+
+  &Selected {
+    @apply shadow;
+  }
+
+  &Clickable {
+    @apply cursor-pointer;
+  }
+}

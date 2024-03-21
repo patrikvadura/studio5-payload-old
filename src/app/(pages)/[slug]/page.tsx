@@ -9,7 +9,6 @@ import BrandHomeOne from '../../../components/brand/BrandHomeOne'
 import MarqueeAreaHomeOne from '../../../components/brand/MarqueeAreaHomeOne'
 import FunFactHomeOne from '../../../components/funfact/FunFactHomeOne'
 import HeroHomeOne from '../../../components/hero/HeroHomeOne'
-import Portfolio from '../../_components/Portfolio'
 import ServiceHomeOne from '../../../components/service/ServiceHomeOne'
 import Testimonial from '../../../components/testimonial/Testimonial'
 import { Page } from '../../../payload/payload-types'
@@ -20,6 +19,7 @@ import { Slider } from '../../_blocks/Slider'
 import About from '../../_components/about'
 import { Blocks } from '../../_components/Blocks'
 import { Hero } from '../../_components/Hero'
+import Portfolio from '../../_components/Portfolio'
 import { generateMeta } from '../../_utilities/generateMeta'
 
 export const dynamic = 'force-dynamic'
@@ -57,7 +57,6 @@ export default async function Page({ params: { slug = 'home' } }) {
         disableTopPadding={!hero || hero?.type === 'none' || hero?.type === 'lowImpact'}
       />
 
-      <MarqueeAreaHomeOne />
       {/*<ServiceHomeOne />*/}
       {/*<AwardsHomeOne />*/}
       {/*<Testimonial />*/}

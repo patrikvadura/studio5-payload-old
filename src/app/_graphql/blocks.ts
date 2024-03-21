@@ -40,6 +40,15 @@ export const SLIDER = `
 }
 `
 
+export const SLIDING_TEXT = `
+...on SlidingText {
+  blockType
+  first
+  second
+  type
+}
+`
+
 export const MEDIA_BLOCK = `
 ...on MediaBlock {
   blockType
@@ -55,6 +64,7 @@ export const ARCHIVE_BLOCK = `
   title
   subtitle
   introContent
+  displayType
   populateBy
   relationTo
   ${CATEGORIES}

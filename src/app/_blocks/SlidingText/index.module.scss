@@ -1,0 +1,34 @@
+.slidingText {
+  @apply py-16 font-bold overflow-hidden;
+
+  &Inner {
+    @apply flex flex-nowrap whitespace-nowrap;
+
+    min-width: 100%;
+  }
+
+  &Content {
+    @apply flex shrink-[0] items-center py-1 mx-2 text-[100px] font-bold leading-[1.2];
+
+    animation: slide-left 20s linear infinite;
+  }
+}
+
+@keyframes slide-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.outline {
+  @apply text-transparent;
+
+  -webkit-text-stroke: 1px #000;
+}
+
+.solid {
+  @apply text-secondary;
+}
