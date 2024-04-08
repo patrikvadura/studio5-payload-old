@@ -16,23 +16,22 @@ export const CallToActionBlock: React.FC<
   }
 > = ({ links, richText, invertBackground }) => {
   return (
-    <Gutter>
-      <VerticalPadding
-        className={[classes.callToAction, invertBackground && classes.invert]
-          .filter(Boolean)
-          .join(' ')}
-      >
-        <div className={classes.wrap}>
-          <div className={classes.content}>
-            <RichText className={classes.richText} content={richText} />
-          </div>
-          <div className={classes.linkGroup}>
-            {(links || []).map(({ link }, i) => {
-              return <CMSLink key={i} {...link} invert={invertBackground} />
-            })}
-          </div>
+    <div
+      className={[classes.callToAction, invertBackground && classes.invert]
+        .filter(Boolean)
+        .join(' ')}
+    >
+      <div className="container py-24 md:py-32 grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="md:col-span-2 lg:col-span-3">
+          <RichText className={classes.richText} content={richText} />
         </div>
-      </VerticalPadding>
-    </Gutter>
+
+        <div className={`${classes.linkGroup} md:col-span-2 lg:col-span-1`}>
+          {(links || []).map(({ link }, i) => {
+            return <CMSLink key={i} {...link} invert={invertBackground} />
+          })}
+        </div>
+      </div>
+    </div>
   )
 }

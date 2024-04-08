@@ -1,0 +1,62 @@
+.image {
+  @apply w-full overflow-hidden;
+
+  width: 100% !important;
+
+  img {
+    @apply h-full;
+
+    object-fit: cover !important;
+    object-position: center !important;
+  }
+}
+
+.text {
+  &Primary {
+    @apply relative my-4 pl-6 text-2xl leading-[56px] text-secondary font-bold z-0;
+
+    &::before {
+      @apply absolute left-0 top-0 rounded-full size-14 bg-gray-200 -z-10;
+
+      content: "";
+    }
+  }
+
+  &Secondary {
+    @apply relative my-4 pl-6 text-2xl leading-[56px] text-secondary font-bold z-0;
+
+    &::before {
+      @apply absolute left-0 top-0 rounded-full size-14 bg-primary -z-10;
+
+      content: "";
+    }
+  }
+
+  &White {
+    @apply relative my-4 pl-6 text-2xl leading-[56px] text-white font-bold z-0;
+
+    &::before {
+      @apply absolute left-0 top-0 rounded-full size-14 bg-primary -z-10;
+
+      content: "";
+    }
+  }
+}
+
+.text {
+  @apply me-4;
+}
+
+.strokeText {
+  &Primary {
+    -webkit-text-stroke: 1px #e91e63;
+  }
+
+  &Secondary {
+    -webkit-text-stroke: 1px #000;
+  }
+
+  &White {
+    -webkit-text-stroke: 1px #fff;
+  }
+}

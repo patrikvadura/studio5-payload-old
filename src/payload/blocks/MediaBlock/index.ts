@@ -9,7 +9,7 @@ export const MediaBlock: Block = {
     plural: 'Media',
   },
   imageURL:
-    'https://res.cloudinary.com/patrik-vadura/image/upload/v1710759870/Payload/Blocks/block_slider_rmbnk9.webp',
+    'https://res.cloudinary.com/patrik-vadura/image/upload/v1710759866/Payload/Blocks/block_media-block_ayshne.webp',
   fields: [
     invertBackground,
     {

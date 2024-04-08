@@ -4,14 +4,26 @@
   @apply min-h-[100vh] relative py-32 overflow-hidden;
 
   .background {
-    @apply absolute w-[45%] top-0 left-0;
+    @apply absolute w-[45%] top-0 left-0 object-cover;
 
     height: calc(100% + 100px);
+
+    &Image {
+      @apply h-full w-full overflow-hidden;
+
+      img {
+        @apply h-full w-full object-cover;
+      }
+    }
   }
   > *:not(.background) {
     position: relative;
     z-index: 6;
   }
+}
+
+.title {
+  @apply text-secondary text-5xl md:text-7xl pt-8 font-bold;
 }
 
 @keyframes textupdown {

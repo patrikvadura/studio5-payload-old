@@ -29,7 +29,7 @@ export const ArchiveBlock: React.FC<
   const CollectionComponent = displayType === 'slider' ? CollectionSlider : CollectionArchive
 
   return (
-    <div>
+    <>
       <div className="py-16">
         {(title || subtitle || introContent) && (
           <div className="container my-16">
@@ -49,9 +49,9 @@ export const ArchiveBlock: React.FC<
           selectedDocs={selectedDocs}
           categories={categories}
           limit={limit}
-          sort="-publishedAt"
+          sort={displayType === 'slider' ? '-publishedAt' : 'publishedAt'}
         />
       </div>
-    </div>
+    </>
   )
 }

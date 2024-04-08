@@ -164,12 +164,12 @@ export const CollectionArchive: React.FC<Props> = props => {
 
   return (
     <>
-      <div className="container grid grid-cols-3 mb-16">
+      <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {results.docs?.map((result, index) => {
           if (typeof result === 'object' && result !== null) {
             return (
-              <div key={result.id} className="p-3">
-                <CardItem doc={result} relationTo={relationTo} showCategories />
+              <div key={result.id} className={`${result.id === 1 ? '!col-span-full' : ''}`}>
+                <CardItem doc={result} relationTo={relationTo} showCategories changeStyleById />
               </div>
             )
           }

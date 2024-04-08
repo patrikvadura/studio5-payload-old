@@ -7,8 +7,12 @@ import { CommentsBlock, type CommentsBlockProps } from '../../_blocks/Comments'
 import { ContentBlock } from '../../_blocks/Content'
 import { MediaBlock } from '../../_blocks/MediaBlock'
 import { RelatedPosts, type RelatedPostsProps } from '../../_blocks/RelatedPosts'
+import { Service } from '../../_blocks/Service'
 import { Slider } from '../../_blocks/Slider'
 import { SlidingText } from '../../_blocks/SlidingText'
+import { NumberList } from '../../_blocks/NumberList'
+import { Testimonial } from '../../_blocks/Testimonial'
+import { Brands } from '../../_blocks/Brands'
 import { toKebabCase } from '../../_utilities/toKebabCase'
 import { BackgroundColor } from '../BackgroundColor'
 import { VerticalPadding, VerticalPaddingOptions } from '../VerticalPadding'
@@ -22,6 +26,10 @@ const blockComponents = {
   comments: CommentsBlock,
   slider: Slider,
   slidingText: SlidingText,
+  service: Service,
+  testimonial: Testimonial,
+  numberList: NumberList,
+  brands: Brands,
 }
 
 export const Blocks: React.FC<{

@@ -15,13 +15,21 @@ export const appearanceOptions = {
     label: 'Hero tlačítko',
     value: 'hero',
   },
+  dynamic: {
+    label: 'Dynamické tlačítko',
+    value: 'dynamic',
+  },
+  arrowOnly: {
+    label: 'Pouze šipka',
+    value: 'arrowOnly',
+  },
   default: {
     label: 'Běžný odkaz',
     value: 'default',
   },
 }
 
-export type LinkAppearances = 'primary' | 'secondary' | 'hero' | 'default'
+export type LinkAppearances = 'primary' | 'secondary' | 'hero' | 'dynamic' | 'arrowOnly' | 'default'
 
 type LinkType = (options?: {
   appearances?: LinkAppearances[] | false
@@ -130,6 +138,8 @@ const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = 
     let appearanceOptionsToUse = [
       appearanceOptions.default,
       appearanceOptions.hero,
+      appearanceOptions.dynamic,
+      appearanceOptions.arrowOnly,
       appearanceOptions.primary,
       appearanceOptions.secondary,
     ]

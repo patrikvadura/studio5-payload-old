@@ -1,20 +1,17 @@
 import React from 'react'
 
 import { Page } from '../../../payload/payload-types'
-import { Gutter } from '../../_components/Gutter'
 import RichText from '../../_components/RichText'
-import { VerticalPadding } from '../../_components/VerticalPadding'
 
 import classes from './index.module.scss'
+import { CMSLink } from '../../_components/Link'
 
-export const LowImpactHero: React.FC<Page['hero']> = ({ richText }) => {
+export const LowImpactHero: React.FC<Page['hero']> = ({ title }) => {
   return (
-    <Gutter className={classes.lowImpactHero}>
-      <div className={classes.content}>
-        <VerticalPadding>
-          <RichText className={classes.richText} content={richText} />
-        </VerticalPadding>
+    <div className={classes.hero}>
+      <div className={`${classes.content} animate-fade-up animate-once animate-ease-in`}>
+        {title && <h2 className={classes.title}>{title}</h2>}
       </div>
-    </Gutter>
+    </div>
   )
 }

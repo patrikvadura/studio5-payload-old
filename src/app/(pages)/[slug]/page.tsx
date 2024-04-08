@@ -3,20 +3,12 @@ import { Metadata } from 'next'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
-import AwardsHomeOne from '../../../components/awards/AwardsHomeOne'
-import BlogHomeOne from '../../../components/blog/BlogHomeOne'
-import BrandHomeOne from '../../../components/brand/BrandHomeOne'
-import MarqueeAreaHomeOne from '../../../components/brand/MarqueeAreaHomeOne'
-import FunFactHomeOne from '../../../components/funfact/FunFactHomeOne'
-import HeroHomeOne from '../../../components/hero/HeroHomeOne'
-import Testimonial from '../../../components/testimonial/Testimonial'
 import { Page } from '../../../payload/payload-types'
 import { staticHome } from '../../../payload/seed/home-static'
 import { fetchDoc } from '../../_api/fetchDoc'
 import { fetchDocs } from '../../_api/fetchDocs'
 import { Blocks } from '../../_components/Blocks'
 import { Hero } from '../../_components/Hero'
-import Service from '../../_components/Service'
 import { generateMeta } from '../../_utilities/generateMeta'
 
 export const dynamic = 'force-dynamic'
@@ -53,13 +45,6 @@ export default async function Page({ params: { slug = 'home' } }) {
         blocks={layout}
         disableTopPadding={!hero || hero?.type === 'none' || hero?.type === 'lowImpact'}
       />
-
-      <Service />
-      {/*<AwardsHomeOne />*/}
-      {/*<Testimonial />*/}
-      {/*<FunFactHomeOne />*/}
-      {/*<BlogHomeOne />*/}
-      {/*<BrandHomeOne style_2={false} />*/}
     </React.Fragment>
   )
 }

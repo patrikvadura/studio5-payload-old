@@ -55,12 +55,13 @@ export interface Page {
             } | null;
             url?: string | null;
             label: string;
-            appearance?: ('default' | 'hero' | 'primary' | 'secondary') | null;
+            appearance?: ('default' | 'hero' | 'dynamic' | 'arrowOnly' | 'primary' | 'secondary') | null;
           };
           id?: string | null;
         }[]
       | null;
     media?: number | Media | null;
+    imageStyle?: ('none' | 'opacity' | 'blur') | null;
   };
   layout?:
     | (
@@ -91,6 +92,7 @@ export interface Page {
           }
         | {
             invertBackground?: boolean | null;
+            reverse?: boolean | null;
             columns?:
               | {
                   size?: ('oneFourth' | 'oneThird' | 'half' | 'twoThirds' | 'threeFourth' | 'full') | null;
@@ -108,7 +110,7 @@ export interface Page {
                     } | null;
                     url?: string | null;
                     label: string;
-                    appearance?: ('default' | 'hero' | 'primary' | 'secondary') | null;
+                    appearance?: ('default' | 'hero' | 'dynamic' | 'arrowOnly' | 'primary' | 'secondary') | null;
                   };
                   id?: string | null;
                 }[]
@@ -191,6 +193,107 @@ export interface Page {
             blockName?: string | null;
             blockType: 'slidingText';
           }
+        | {
+            title: string;
+            subtitle?: string | null;
+            mainLinks?:
+              | {
+                  link: {
+                    type?: ('reference' | 'custom') | null;
+                    newTab?: boolean | null;
+                    reference?: {
+                      relationTo: 'pages';
+                      value: number | Page;
+                    } | null;
+                    url?: string | null;
+                    label: string;
+                    appearance?: ('default' | 'hero' | 'dynamic' | 'arrowOnly' | 'primary' | 'secondary') | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            items?:
+              | {
+                  title: string;
+                  richText: {
+                    [k: string]: unknown;
+                  }[];
+                  links?:
+                    | {
+                        link: {
+                          type?: ('reference' | 'custom') | null;
+                          newTab?: boolean | null;
+                          reference?: {
+                            relationTo: 'pages';
+                            value: number | Page;
+                          } | null;
+                          url?: string | null;
+                          label: string;
+                          appearance?: ('default' | 'hero' | 'dynamic' | 'arrowOnly' | 'primary' | 'secondary') | null;
+                        };
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'service';
+          }
+        | {
+            title: string;
+            items?:
+              | {
+                  richText: {
+                    [k: string]: unknown;
+                  }[];
+                  name: string;
+                  other?: string | null;
+                  media?: number | Media | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'testimonial';
+          }
+        | {
+            invertBackground?: boolean | null;
+            style?: ('outlinePrimary' | 'outlineSecondary' | 'solidPrimary' | 'solidSecondary') | null;
+            columns?:
+              | {
+                  sizeField?: ('oneFourth' | 'oneThird') | null;
+                  sizeNumber?: ('small' | 'default' | 'medium' | 'large') | null;
+                  number: number;
+                  extension?: string | null;
+                  title?: string | null;
+                  richText?:
+                    | {
+                        [k: string]: unknown;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'numberList';
+          }
+        | {
+            invertBackground?: boolean | null;
+            title?: string | null;
+            items?:
+              | {
+                  size?: ('small' | 'normal' | 'large') | null;
+                  media?: number | Media | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'brands';
+          }
       )[]
     | null;
   slug?: string | null;
@@ -223,6 +326,80 @@ export interface Media {
   filesize?: number | null;
   width?: number | null;
   height?: number | null;
+  sizes?: {
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    square?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    squareSmall?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    card?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    cardVertical?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    desktop?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    desktopCropped?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    tablet?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    tabletCropped?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -279,12 +456,13 @@ export interface Post {
             } | null;
             url?: string | null;
             label: string;
-            appearance?: ('default' | 'hero' | 'primary' | 'secondary') | null;
+            appearance?: ('default' | 'hero' | 'dynamic' | 'arrowOnly' | 'primary' | 'secondary') | null;
           };
           id?: string | null;
         }[]
       | null;
     media?: number | Media | null;
+    imageStyle?: ('none' | 'opacity' | 'blur') | null;
   };
   layout: (
     | {
@@ -314,6 +492,7 @@ export interface Post {
       }
     | {
         invertBackground?: boolean | null;
+        reverse?: boolean | null;
         columns?:
           | {
               size?: ('oneFourth' | 'oneThird' | 'half' | 'twoThirds' | 'threeFourth' | 'full') | null;
@@ -331,7 +510,7 @@ export interface Post {
                 } | null;
                 url?: string | null;
                 label: string;
-                appearance?: ('default' | 'hero' | 'primary' | 'secondary') | null;
+                appearance?: ('default' | 'hero' | 'dynamic' | 'arrowOnly' | 'primary' | 'secondary') | null;
               };
               id?: string | null;
             }[]
@@ -421,6 +600,7 @@ export interface Post {
           }
         | {
             invertBackground?: boolean | null;
+            reverse?: boolean | null;
             columns?:
               | {
                   size?: ('oneFourth' | 'oneThird' | 'half' | 'twoThirds' | 'threeFourth' | 'full') | null;
@@ -438,7 +618,7 @@ export interface Post {
                     } | null;
                     url?: string | null;
                     label: string;
-                    appearance?: ('default' | 'hero' | 'primary' | 'secondary') | null;
+                    appearance?: ('default' | 'hero' | 'dynamic' | 'arrowOnly' | 'primary' | 'secondary') | null;
                   };
                   id?: string | null;
                 }[]
@@ -558,12 +738,13 @@ export interface Project {
             } | null;
             url?: string | null;
             label: string;
-            appearance?: ('default' | 'hero' | 'primary' | 'secondary') | null;
+            appearance?: ('default' | 'hero' | 'dynamic' | 'arrowOnly' | 'primary' | 'secondary') | null;
           };
           id?: string | null;
         }[]
       | null;
     media?: number | Media | null;
+    imageStyle?: ('none' | 'opacity' | 'blur') | null;
   };
   layout?:
     | (
@@ -594,6 +775,7 @@ export interface Project {
           }
         | {
             invertBackground?: boolean | null;
+            reverse?: boolean | null;
             columns?:
               | {
                   size?: ('oneFourth' | 'oneThird' | 'half' | 'twoThirds' | 'threeFourth' | 'full') | null;
@@ -611,7 +793,7 @@ export interface Project {
                     } | null;
                     url?: string | null;
                     label: string;
-                    appearance?: ('default' | 'hero' | 'primary' | 'secondary') | null;
+                    appearance?: ('default' | 'hero' | 'dynamic' | 'arrowOnly' | 'primary' | 'secondary') | null;
                   };
                   id?: string | null;
                 }[]

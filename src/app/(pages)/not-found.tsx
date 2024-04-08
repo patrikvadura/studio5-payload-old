@@ -1,15 +1,19 @@
 import { Button } from '../_components/Button'
-import { Gutter } from '../_components/Gutter'
-import { VerticalPadding } from '../_components/VerticalPadding'
 
 export default function NotFound() {
   return (
-    <Gutter>
-      <VerticalPadding top="none" bottom="large">
-        <h1 style={{ marginBottom: 0 }}>404</h1>
-        <p>This page could not be found.</p>
-        <Button href="/" label="Go Home" appearance="primary" />
-      </VerticalPadding>
-    </Gutter>
+    <div className="container py-32">
+      <div className="max-w-screen-md space-y-8">
+        <h1 className="text-gray-300 text-[100px] font-bold">404</h1>
+
+        <h3 className="text-secondary text-2xl font-bold">Stránka nebyla nalezena</h3>
+
+        <p className="text-secondary">
+          Omlouváme seza potíže, důvodem může být že zvolená stránka neexistuje nebo aktuálně
+          prochází údržbou. Prosím zkontrolujte cestu aktuální adresy a případně se vraťe zpět.
+        </p>
+        <Button href="/" label="Zpět na úvod" appearance="dynamic" />
+      </div>
+    </div>
   )
 }

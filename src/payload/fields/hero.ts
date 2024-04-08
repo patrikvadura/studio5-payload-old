@@ -33,19 +33,19 @@ export const hero: Field = {
       defaultValue: 'none',
       options: [
         {
-          label: 'None',
+          label: 'Žádný',
           value: 'none',
         },
         {
-          label: 'High Impact',
+          label: 'Velká sekce s obrázkem',
           value: 'highImpact',
         },
         {
-          label: 'Medium Impact',
+          label: 'Malá sekce s obrázkem',
           value: 'mediumImpact',
         },
         {
-          label: 'Low Impact',
+          label: 'Pouze text',
           value: 'lowImpact',
         },
       ],
@@ -69,6 +69,30 @@ export const hero: Field = {
       required: false,
       admin: {
         condition: (_, { type } = {}) => ['highImpact', 'mediumImpact'].includes(type),
+      },
+    },
+    {
+      type: 'select',
+      name: 'imageStyle',
+      label: 'Styl obrázku',
+      required: false,
+      defaultValue: 'none',
+      options: [
+        {
+          label: 'Žádný',
+          value: 'none',
+        },
+        {
+          label: 'Zprůhlednění',
+          value: 'opacity',
+        },
+        {
+          label: 'Rozostření',
+          value: 'blur',
+        },
+      ],
+      admin: {
+        condition: (_, { type } = {}) => ['highImpact'].includes(type),
       },
     },
   ],

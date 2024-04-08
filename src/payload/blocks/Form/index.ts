@@ -8,7 +8,8 @@ export const FormBlock: Block = {
     singular: 'Formulář',
     plural: 'Formuláře',
   },
-  imageURL: '',
+  imageURL:
+    'https://res.cloudinary.com/patrik-vadura/image/upload/v1711130661/Payload/Blocks/block_form_mck0l9.webp',
   graphQL: {
     singularName: 'FormBlock',
   },

@@ -9,7 +9,7 @@ import { fetchDoc } from '../../../_api/fetchDoc'
 import { fetchDocs } from '../../../_api/fetchDocs'
 import { Blocks } from '../../../_components/Blocks'
 import { PremiumContent } from '../../../_components/PremiumContent'
-import { PostHero } from '../../../_heros/PostHero'
+import { PostHero } from '../../../_components/Hero/PostHero'
 import { generateMeta } from '../../../_utilities/generateMeta'
 
 // Force this page to be dynamic so that Next.js does not cache it

@@ -1,4 +1,15 @@
-import { ARCHIVE_BLOCK, CALL_TO_ACTION, CONTENT, MEDIA_BLOCK, SLIDER, SLIDING_TEXT } from './blocks'
+import {
+  ARCHIVE_BLOCK,
+  BRANDS,
+  CALL_TO_ACTION,
+  CONTENT,
+  MEDIA_BLOCK,
+  NUMBER_LIST,
+  SERVICE,
+  SLIDER,
+  SLIDING_TEXT,
+  TESTIMONIAL,
+} from './blocks'
 import { LINK_FIELDS } from './link'
 import { MEDIA } from './media'
 import { META } from './meta'
@@ -28,6 +39,7 @@ export const PAGE = `
             link ${LINK_FIELDS()}
           }
           ${MEDIA}
+          imageStyle
         }
         layout {
           ${CONTENT}
@@ -37,6 +49,10 @@ export const PAGE = `
           ${ARCHIVE_BLOCK}
           ${SLIDER}
           ${SLIDING_TEXT}
+          ${SERVICE}
+          ${TESTIMONIAL}
+          ${NUMBER_LIST}
+          ${BRANDS}
         }
         ${META}
       }

@@ -1,12 +1,12 @@
 'use client'
 import React from 'react'
+import { Icon } from '@iconify/react'
 import { Navigation, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import { Page } from '../../../payload/payload-types'
 import { Media } from '../../_components/Media'
 import RichText from '../../_components/RichText'
-import { Icon } from '@iconify/react'
 
 import classes from './index.module.scss'
 

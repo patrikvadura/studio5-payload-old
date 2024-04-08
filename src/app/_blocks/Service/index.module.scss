@@ -1,0 +1,59 @@
+.service {
+  @apply relative py-24 bg-secondary;
+}
+
+.subtitle {
+  @apply relative inline-block mb-8 pl-6 text-lg text-white;
+
+  &::before {
+    @apply top-[6px] left-0 size-4 rounded-full absolute bg-primary;
+
+    content: "";
+  }
+}
+
+.title {
+  @apply mb-12 text-white text-4xl md:text-5xl font-bold;
+}
+
+.link {
+  span {
+    @apply text-white hover:text-primary;
+  }
+}
+
+.cards {
+  @apply space-y-8;
+
+  &Item {
+    @apply flex flex-col relative text-white;
+
+    @screen md {
+      @apply flex-row items-center justify-between space-x-32;
+    }
+
+    &Number {
+      @apply text-[90px] font-bold;
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-attachment: scroll;
+      -webkit-text-stroke: 1px rgba(255, 255, 255, .5);
+      transition: all .5s ease-in-out;
+
+      &:hover {
+        @apply text-primary;
+
+        -webkit-text-fill-color: #E91E63;
+        -webkit-text-stroke: 2px rgba(#E91E63, .5);
+      }
+
+      &:is(:first-of-type) {
+        @screen md {
+          @apply ml-8;
+        }
+      }
+    }
+  }
+}

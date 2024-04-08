@@ -18,8 +18,7 @@ import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
 import { Projects } from './collections/Projects'
 import Users from './collections/Users'
-import BeforeDashboard from './components/BeforeDashboard'
-import BeforeLogin from './components/BeforeLogin'
+import BeforeNavLinks from './components/BeforeNavLinks'
 import { seed } from './endpoints/seed'
 import { Footer } from './globals/Footer'
 import { Header } from './globals/Header'
@@ -40,8 +39,7 @@ export default buildConfig({
     user: Users.slug,
     bundler: webpackBundler(),
     components: {
-      beforeLogin: [BeforeLogin],
-      beforeDashboard: [BeforeDashboard],
+      beforeNavLinks: [BeforeNavLinks],
     },
     webpack: config => ({
       ...config,
@@ -66,6 +64,11 @@ export default buildConfig({
   }),
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
   collections: [Pages, Posts, Projects, Media, Categories, Users, Comments],
+  upload: {
+    limits: {
+      fileSize: 5000000, // 5MB, written in bytes
+    },
+  },
   globals: [Settings, Header, Footer],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),

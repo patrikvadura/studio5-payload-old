@@ -70,6 +70,11 @@ export const Content: Block = {
   fields: [
     invertBackground,
     {
+      name: 'reverse',
+      label: 'Zrcadlit obsah',
+      type: 'checkbox',
+    },
+    {
       name: 'columns',
       label: 'Rozložení',
       type: 'array',

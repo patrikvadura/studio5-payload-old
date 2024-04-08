@@ -18,6 +18,7 @@ export const CardItem: React.FC<{
   relationTo?: 'projects' | 'posts'
   doc?: Project | Post
   orientation?: 'horizontal' | 'vertical'
+  changeStyleById?: boolean // new prop
 }> = props => {
   const {
     relationTo,
@@ -26,6 +27,7 @@ export const CardItem: React.FC<{
     doc,
     className,
     orientation = 'vertical',
+    changeStyleById = false, // new prop
   } = props
 
   const { slug, title, categories, meta } = doc || {}
@@ -36,41 +38,45 @@ export const CardItem: React.FC<{
   const sanitizedDescription = description?.replace(/\s/g, ' ') // replace non-breaking space with white space
   const href = `/${relationTo}/${slug}`
 
+  const shouldChangeStyle = changeStyleById && doc.id === 1
+
   return (
     <Link href={href}>
       <Card className="!bg-secondary h-[400px] group !relative">
         <CardHeader className="absolute z-10 top-1 flex-col !items-start space-y-4 p-8">
           {showCategories && hasCategories && (
-            <div className="text-sm text-white">
-              {showCategories && hasCategories && (
-                <div>
-                  {categories?.map((category, index) => {
-                    if (typeof category === 'object') {
-                      const { title: titleFromCategory } = category
+            <div className={`${shouldChangeStyle ? 'text-lg' : 'text-sm'} text-white`}>
+              <h4>
+                {categories?.map((category, index) => {
+                  if (typeof category === 'object') {
+                    const { title: titleFromCategory } = category
 
-                      const categoryTitle = titleFromCategory || 'Untitled category'
+                    const categoryTitle = titleFromCategory || 'Untitled category'
 
-                      const isLast = index === categories.length - 1
+                    const isLast = index === categories.length - 1
 
-                      return (
-                        <Fragment key={index}>
-                          {categoryTitle}
-                          {!isLast && <Fragment>, &nbsp;</Fragment>}
-                        </Fragment>
-                      )
-                    }
+                    return (
+                      <Fragment key={index}>
+                        {categoryTitle}
+                        {!isLast && <Fragment>, &nbsp;</Fragment>}
+                      </Fragment>
+                    )
+                  }
 
-                    return null
-                  })}
-                </div>
-              )}
+                  return null
+                })}
+              </h4>
             </div>
           )}
 
-          {titleToUse && <h3 className="text-white font-bold text-3xl">{titleToUse}</h3>}
+          {titleToUse && (
+            <h3 className={`${shouldChangeStyle ? 'text-3xl md:text-6xl' : 'text-3xl'} text-white font-bold`}>
+              {titleToUse}
+            </h3>
+          )}
 
           {description && (
-            <div className="text-white">
+            <div className={`${shouldChangeStyle ? 'md:text-xl' : ''} text-white`}>
               {sanitizedDescription.length > 32
                 ? `${sanitizedDescription.substring(0, 60)}...`
                 : sanitizedDescription}

@@ -1,7 +1,5 @@
 import type { Block } from 'payload/types'
 
-import colorField from '../../fields/colorField'
-
 export const SlidingText: Block = {
   slug: 'slidingText',
   labels: {
@@ -9,7 +7,7 @@ export const SlidingText: Block = {
     plural: 'Rotující texty',
   },
   imageURL:
-    'https://res.cloudinary.com/patrik-vadura/image/upload/v1710625573/Payload/Blocks/block_cta_tpvntg.webp',
+    'https://res.cloudinary.com/patrik-vadura/image/upload/v1711130449/Payload/Blocks/block_sliding-text_ndsnyt.webp',
   fields: [
     {
       name: 'first',
